@@ -88,6 +88,16 @@ public interface IsiGrammarListener extends ParseTreeListener {
 	 */
 	void exitCmdexpr(IsiGrammarParser.CmdexprContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link IsiGrammarParser#cmdwhile}.
+	 * @param ctx the parse tree
+	 */
+	void enterCmdwhile(IsiGrammarParser.CmdwhileContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link IsiGrammarParser#cmdwhile}.
+	 * @param ctx the parse tree
+	 */
+	void exitCmdwhile(IsiGrammarParser.CmdwhileContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link IsiGrammarParser#term}.
 	 * @param ctx the parse tree
 	 */

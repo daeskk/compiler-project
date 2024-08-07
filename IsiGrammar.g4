@@ -11,7 +11,7 @@ declare 			: 'declare' IDENTIFIER (COMMA IDENTIFIER)* DOT
 block				: (cmd)+
 					;
 			
-cmd					: cmdread | cmdwrite | cmdexpr | cmdif
+cmd					: cmdread | cmdwrite | cmdexpr | cmdif | cmdwhile
 					;
 			
 cmdread				: 'leia' LEFTPARENTHESIS IDENTIFIER RIGHTPARENTHESIS DOT
@@ -21,11 +21,15 @@ cmdwrite			: 'escreva' LEFTPARENTHESIS (TEXT | IDENTIFIER) RIGHTPARENTHESIS DOT
 					;
 			
 cmdif				: 'se' LEFTPARENTHESIS expr RELOPERATOR expr RIGHTPARENTHESIS 
-						'entao' OPENBRACKETS cmd+ CLOSEBRACKETS 
-							('senao' OPENBRACKETS cmd+ CLOSEBRACKETS)?
+						'entao' OPENBRACKETS (cmd)+ CLOSEBRACKETS 
+							('senao' OPENBRACKETS (cmd)+ CLOSEBRACKETS)?
 					;
 
 cmdexpr 			: IDENTIFIER ':=' expr DOT
+					;
+					
+cmdwhile			: 'enquanto' LEFTPARENTHESIS expr RELOPERATOR expr RIGHTPARENTHESIS
+						OPENBRACKETS (cmd)+ CLOSEBRACKETS
 					;
 			
 term 				: factor ((MUL | DIV) factor)*
@@ -43,7 +47,7 @@ RELOPERATOR 		: '<' | '>' | '<=' | '>=' | '!=' | '=='
 TEXT 				: DOUBLEQUOTE ( [a-z] | [A-Z] | [0-9] | ' ' )+ DOUBLEQUOTE
 					;
 
-NUMBER				: [0-9]+
+NUMBER				: [0-9]+ 
 					;
 
 IDENTIFIER 			: ( [a-z] | [A-Z] ) ( [a-z] | [A-Z] | [0-9] )*

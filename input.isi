@@ -2,7 +2,7 @@ programa
 
 declare a, b, c, d.
 
-a := 1.
+a := 6.
 
 b := a + 2.
 
@@ -15,5 +15,14 @@ se (b > 5) entao {
 
 escreva("oi aqui esta o valor da soma").
 escreva(b).
+
+c := 1.
+
+enquanto (c <= b) {
+	escreva("legal ").
+	
+	c := c + 1.
+}
+
 
 fimprog.

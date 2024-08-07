@@ -21,7 +21,7 @@ public class Main
 			commonTokenStream = new CommonTokenStream(grammarLexer);
 			grammarParser = new IsiGrammarParser(commonTokenStream);
 			
-			System.out.println("Running the compiler...");
+			System.out.println("Compilation started..");
 			
 			grammarParser.prog();
 			
@@ -29,7 +29,7 @@ public class Main
 		} 
 		catch (Exception e) 
 		{
-			// TODO: handle exception
+			System.err.println("Generic error occured: " + e.getMessage());
 		}
 	}
 
