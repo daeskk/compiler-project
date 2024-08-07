@@ -1,12 +1,10 @@
 grammar IsiGrammar;
 
-@header{
-    import java.util.ArrayList;
-    import java.util.List;
-}
+// TODO: do the check for unused variables
 
-prog 		: 'programa' Declara Bloco 'fimprog' DOT
+prog 		: 'programa' Declara Bloco 'fimprog' DOT 
 			;
+
 
 Declara 	: 'declare' Id (COMMA Id)* DOT
 			;
@@ -17,16 +15,15 @@ Bloco 		: (Cmd DOT)+
 Cmd			: CmdLeitura | CmdEscrita | CmdExpr | CmdIf
 			;
 			
-CmdLeitura	: 'leia' OPENPARENTHESIS Id CLOSEPARENTHESIS
+CmdLeitura	: 'leia' LEFTPARENTHESIS Id RIGHTPARENTHESIS
 			;
 
-CmdEscrita	: 'escreva' OPENPARENTHESIS Texto | Id CLOSEPARENTHESIS
+CmdEscrita	: 'escreva' LEFTPARENTHESIS Texto | Id RIGHTPARENTHESIS
 			;
 			
-CmdIf		: 'se' OPENPARENTHESIS Expr Op_rel Expr CLOSEPARENTHESIS 
+CmdIf		: 'se' LEFTPARENTHESIS Expr Op_rel Expr RIGHTPARENTHESIS 
 				'entao' OPENBRACKETS Cmd+ CLOSEBRACKETS 
 					('senao' OPENBRACKETS Cmd+ CLOSEBRACKETS)?
-			
 			;
 
 CmdExpr 	: Id ':=' Expr
@@ -35,13 +32,13 @@ CmdExpr 	: Id ':=' Expr
 Op_rel 		: '<' | '>' | '<=' | '>=' | '!=' | '==' 
 			;
 			
-Termo 		: Termo '*' Fator | Termo '/' Fator | Fator
+Termo 		: Fator ((MUL | DIV) Fator)*
 			;
-		
-Expr 		: Expr '+' Termo | Expr '-' Termo | Termo
+			
+Expr 		: Termo ((PLUS | MINUS) Termo)*
 			;
 						
-Fator		: Num | Id | '(' Expr ')'
+Fator		: Num | Id | LEFTPARENTHESIS Expr RIGHTPARENTHESIS
 			;
 			
 Texto 		: DOUBLEQUOTE ( [a-z] | [A-Z] | [0-9] | ' ' )+ DOUBLEQUOTE
@@ -53,20 +50,26 @@ Num			: [0-9]+
 Id 			: ( [a-z] | [A-Z] ) ( [a-z] | [A-Z] | [0-9] )*
 			;
 			
-			
-DOUBLEQUOTE			: '"'
-					;
 					
-OPERATOR			: '+' | '-' | '*' | '/' | '**'
+PLUS    			: '+'
+					;
+		
+MINUS   			: '-'
+					;
+		
+MUL     			: '*'
+					;
+		
+DIV     			: '/'
 					;
 		
 COMMA				: ','
 					;
 				
-OPENPARENTHESIS 	: '('
+LEFTPARENTHESIS 	: '('
 					;
 				
-CLOSEPARENTHESIS 	: ')'
+RIGHTPARENTHESIS 	: ')'
 					;
 
 OPENBRACKETS  		: '{'
@@ -79,6 +82,9 @@ DP					: ':'
 		    		;
 		    
 DOT					: '.'
+					;
+					
+DOUBLEQUOTE			: '"'
 					;
 		    		
 WS					: (' ' | '\n' | '\r' | '\t' ) -> skip

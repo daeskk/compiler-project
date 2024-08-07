@@ -19,9 +19,9 @@ public class IsiGrammarParser extends Parser {
 	public static final int
 		T__0=1, T__1=2, Declara=3, Bloco=4, Cmd=5, CmdLeitura=6, CmdEscrita=7, 
 		CmdIf=8, CmdExpr=9, Op_rel=10, Termo=11, Expr=12, Fator=13, Texto=14, 
-		Num=15, Id=16, DOUBLEQUOTE=17, OPERATOR=18, COMMA=19, OPENPARENTHESIS=20, 
-		CLOSEPARENTHESIS=21, OPENBRACKETS=22, CLOSEBRACKETS=23, DP=24, DOT=25, 
-		WS=26;
+		Num=15, Id=16, PLUS=17, MINUS=18, MUL=19, DIV=20, COMMA=21, LEFTPARENTHESIS=22, 
+		RIGHTPARENTHESIS=23, OPENBRACKETS=24, CLOSEBRACKETS=25, DP=26, DOT=27, 
+		DOUBLEQUOTE=28, WS=29;
 	public static final int
 		RULE_prog = 0;
 	private static String[] makeRuleNames() {
@@ -34,8 +34,8 @@ public class IsiGrammarParser extends Parser {
 	private static String[] makeLiteralNames() {
 		return new String[] {
 			null, "'programa'", "'fimprog'", null, null, null, null, null, null, 
-			null, null, null, null, null, null, null, null, "'\"'", null, "','", 
-			"'('", "')'", "'{'", "'}'", "':'", "'.'"
+			null, null, null, null, null, null, null, null, "'+'", "'-'", "'*'", 
+			"'/'", "','", "'('", "')'", "'{'", "'}'", "':'", "'.'", "'\"'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
@@ -43,8 +43,8 @@ public class IsiGrammarParser extends Parser {
 		return new String[] {
 			null, null, null, "Declara", "Bloco", "Cmd", "CmdLeitura", "CmdEscrita", 
 			"CmdIf", "CmdExpr", "Op_rel", "Termo", "Expr", "Fator", "Texto", "Num", 
-			"Id", "DOUBLEQUOTE", "OPERATOR", "COMMA", "OPENPARENTHESIS", "CLOSEPARENTHESIS", 
-			"OPENBRACKETS", "CLOSEBRACKETS", "DP", "DOT", "WS"
+			"Id", "PLUS", "MINUS", "MUL", "DIV", "COMMA", "LEFTPARENTHESIS", "RIGHTPARENTHESIS", 
+			"OPENBRACKETS", "CLOSEBRACKETS", "DP", "DOT", "DOUBLEQUOTE", "WS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -147,12 +147,12 @@ public class IsiGrammarParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\u001a\t\u0002\u0000\u0007\u0000\u0001\u0000\u0001\u0000\u0001"+
+		"\u0004\u0001\u001d\t\u0002\u0000\u0007\u0000\u0001\u0000\u0001\u0000\u0001"+
 		"\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0000\u0000\u0001"+
 		"\u0000\u0000\u0000\u0007\u0000\u0002\u0001\u0000\u0000\u0000\u0002\u0003"+
 		"\u0005\u0001\u0000\u0000\u0003\u0004\u0005\u0003\u0000\u0000\u0004\u0005"+
 		"\u0005\u0004\u0000\u0000\u0005\u0006\u0005\u0002\u0000\u0000\u0006\u0007"+
-		"\u0005\u0019\u0000\u0000\u0007\u0001\u0001\u0000\u0000\u0000\u0000";
+		"\u0005\u001b\u0000\u0000\u0007\u0001\u0001\u0000\u0000\u0000\u0000";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
