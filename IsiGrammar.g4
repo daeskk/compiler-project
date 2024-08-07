@@ -2,54 +2,52 @@ grammar IsiGrammar;
 
 // TODO: do the check for unused variables
 
-prog 		: 'programa' Declara Bloco 'fimprog' DOT 
-			;
+prog 				: 'programa' declare block 'fimprog' DOT 
+					;
 
+declare 			: 'declare' IDENTIFIER (COMMA IDENTIFIER)* DOT
+					;
 
-Declara 	: 'declare' Id (COMMA Id)* DOT
-			;
+block				: (cmd DOT)+
+					;
+			
+cmd					: cmdread | cmdwrite | cmdexpr | cmdif
+					;
+			
+cmdread				: 'leia' LEFTPARENTHESIS IDENTIFIER RIGHTPARENTHESIS
+					;
 
-Bloco 		: (Cmd DOT)+
-			;
+cmdwrite			: 'escreva' LEFTPARENTHESIS (TEXT | IDENTIFIER) RIGHTPARENTHESIS
+					;
 			
-Cmd			: CmdLeitura | CmdEscrita | CmdExpr | CmdIf
-			;
-			
-CmdLeitura	: 'leia' LEFTPARENTHESIS Id RIGHTPARENTHESIS
-			;
+cmdif				: 'se' LEFTPARENTHESIS expr RELOPERATOR expr RIGHTPARENTHESIS 
+						'entao' OPENBRACKETS cmd+ CLOSEBRACKETS 
+							('senao' OPENBRACKETS cmd+ CLOSEBRACKETS)?
+					;
 
-CmdEscrita	: 'escreva' LEFTPARENTHESIS Texto | Id RIGHTPARENTHESIS
-			;
+cmdexpr 			: IDENTIFIER ':=' expr
+					;
 			
-CmdIf		: 'se' LEFTPARENTHESIS Expr Op_rel Expr RIGHTPARENTHESIS 
-				'entao' OPENBRACKETS Cmd+ CLOSEBRACKETS 
-					('senao' OPENBRACKETS Cmd+ CLOSEBRACKETS)?
-			;
-
-CmdExpr 	: Id ':=' Expr
-			;
+term 				: factor ((MUL | DIV) factor)*
+					;
 			
-Op_rel 		: '<' | '>' | '<=' | '>=' | '!=' | '==' 
-			;
-			
-Termo 		: Fator ((MUL | DIV) Fator)*
-			;
-			
-Expr 		: Termo ((PLUS | MINUS) Termo)*
-			;
+expr 				: term ((PLUS | MINUS) term)*
+					;
 						
-Fator		: Num | Id | LEFTPARENTHESIS Expr RIGHTPARENTHESIS
-			;
-			
-Texto 		: DOUBLEQUOTE ( [a-z] | [A-Z] | [0-9] | ' ' )+ DOUBLEQUOTE
-			;
+factor				: NUMBER | IDENTIFIER | LEFTPARENTHESIS expr RIGHTPARENTHESIS
+					;
 
-Num			: [0-9]+
-			;
+RELOPERATOR 		: '<' | '>' | '<=' | '>=' | '!=' | '==' 
+					;
+					
+TEXT 				: DOUBLEQUOTE ( [a-z] | [A-Z] | [0-9] | ' ' )+ DOUBLEQUOTE
+					;
 
-Id 			: ( [a-z] | [A-Z] ) ( [a-z] | [A-Z] | [0-9] )*
-			;
-			
+NUMBER				: [0-9]+
+					;
+
+IDENTIFIER 			: ( [a-z] | [A-Z] ) ( [a-z] | [A-Z] | [0-9] )*
+					;
 					
 PLUS    			: '+'
 					;

@@ -6,6 +6,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/arthur/Downloads/antlr-4.13.2-complete.jar"/>
+	<classpathentry kind="lib" path="C:/Users/arthur/eclipse-workspace/compiler/antlr-4.13.2-complete.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
