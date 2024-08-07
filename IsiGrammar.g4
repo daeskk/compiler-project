@@ -8,16 +8,16 @@ prog 				: 'programa' declare block 'fimprog' DOT
 declare 			: 'declare' IDENTIFIER (COMMA IDENTIFIER)* DOT
 					;
 
-block				: (cmd DOT)+
+block				: (cmd)+
 					;
 			
 cmd					: cmdread | cmdwrite | cmdexpr | cmdif
 					;
 			
-cmdread				: 'leia' LEFTPARENTHESIS IDENTIFIER RIGHTPARENTHESIS
+cmdread				: 'leia' LEFTPARENTHESIS IDENTIFIER RIGHTPARENTHESIS DOT
 					;
 
-cmdwrite			: 'escreva' LEFTPARENTHESIS (TEXT | IDENTIFIER) RIGHTPARENTHESIS
+cmdwrite			: 'escreva' LEFTPARENTHESIS (TEXT | IDENTIFIER) RIGHTPARENTHESIS DOT
 					;
 			
 cmdif				: 'se' LEFTPARENTHESIS expr RELOPERATOR expr RIGHTPARENTHESIS 
@@ -25,7 +25,7 @@ cmdif				: 'se' LEFTPARENTHESIS expr RELOPERATOR expr RIGHTPARENTHESIS
 							('senao' OPENBRACKETS cmd+ CLOSEBRACKETS)?
 					;
 
-cmdexpr 			: IDENTIFIER ':=' expr
+cmdexpr 			: IDENTIFIER ':=' expr DOT
 					;
 			
 term 				: factor ((MUL | DIV) factor)*

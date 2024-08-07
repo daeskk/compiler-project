@@ -1,7 +1,19 @@
 programa 
 
-declare a.
+declare a, b, c, d.
 
-escreva("oi").
+a := 1.
+
+b := a + 2.
+
+se (b > 5) entao {
+	escreva("uau legal").
+} senao {
+	escreva("waow if else").
+}
+
+
+escreva("oi aqui esta o valor da soma").
+escreva(b).
 
 fimprog.
