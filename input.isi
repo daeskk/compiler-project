@@ -16,12 +16,12 @@ se (b > 5) entao {
 escreva("oi aqui esta o valor da soma").
 escreva(b).
 
-c := 1.
+c := 1.5.
 
-enquanto (c <= b) {
+enquanto (c <= 111.11) {
 	escreva("legal ").
 	
-	c := c + 1.
+	c := c + 15.9.
 }
 
 

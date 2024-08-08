@@ -8,7 +8,6 @@ import compiler.core.IsiGrammarParser;
 
 public class Main
 {
-
 	public static void main(String[] args)
 	{
 		try 
@@ -26,6 +25,7 @@ public class Main
 			grammarParser.prog();
 			
 			System.out.println("Compilation successful.");	
+		
 		} 
 		catch (Exception e) 
 		{

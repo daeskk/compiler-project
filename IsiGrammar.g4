@@ -2,7 +2,17 @@ grammar IsiGrammar;
 
 // TODO: do the check for unused variables
 
-prog 				: 'programa' declare block 'fimprog' DOT 
+@header {
+	
+	
+}
+
+@members {
+
+
+}
+
+prog 				: 'programa' (declare)* block 'fimprog' DOT 
 					;
 
 declare 			: 'declare' IDENTIFIER (COMMA IDENTIFIER)* DOT
@@ -41,16 +51,25 @@ expr 				: term ((PLUS | MINUS) term)*
 factor				: NUMBER | IDENTIFIER | LEFTPARENTHESIS expr RIGHTPARENTHESIS
 					;
 
+
+
+
+
+
+
+
+
+
 RELOPERATOR 		: '<' | '>' | '<=' | '>=' | '!=' | '==' 
 					;
 					
 TEXT 				: DOUBLEQUOTE ( [a-z] | [A-Z] | [0-9] | ' ' )+ DOUBLEQUOTE
 					;
 
-NUMBER				: [0-9]+ 
+NUMBER				: [0-9]+ ('.' [0-9]+)?
 					;
 
-IDENTIFIER 			: ( [a-z] | [A-Z] ) ( [a-z] | [A-Z] | [0-9] )*
+IDENTIFIER 			: ( [a-z] | [A-Z] ) ( [a-z] | [A-Z] | [0-9] )* 
 					;
 					
 PLUS    			: '+'
