@@ -5,6 +5,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
 
 import compiler.core.IsiGrammarLexer;
 import compiler.core.IsiGrammarParser;
+import compiler.exceptions.SemanticException;
 
 public class Main
 {
@@ -27,9 +28,13 @@ public class Main
 			System.out.println("Compilation successful.");	
 		
 		} 
+		catch (SemanticException e) {
+			System.err.println("Semantic error occurred: " + e.getMessage());
+		}
+		
 		catch (Exception e) 
 		{
-			System.err.println("Generic error occured: " + e.getMessage());
+			System.err.println("Generic error occurred: " + e.getMessage());
 		}
 	}
 
