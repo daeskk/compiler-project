@@ -5,34 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e74b6448-a45c-43ed-8af4-edf531993f81" name="Changes" comment="parser almost finished">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/compiler-core/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/compiler-api/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/compiler-api/src/main/resources/CompilerApiApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input.isi" beforeDir="false" afterPath="$PROJECT_DIR$/input.isi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/core/IsiGrammar.interp" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammar.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/core/IsiGrammar.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammar.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/core/IsiGrammarBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarBaseListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/core/IsiGrammarLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarLexer.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/core/IsiGrammarLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarLexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/core/IsiGrammarLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarLexer.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/core/IsiGrammarListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/core/IsiGrammarParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/datastructures/Symbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/datastructures/Symbol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/datastructures/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/datastructures/SymbolTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/datastructures/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/datastructures/Variable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/exceptions/SemanticException.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/exceptions/SemanticException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiler/core/IsiGrammar.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiler/core/IsiGrammar.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiler/core/IsiGrammarLexer.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiler/core/IsiGrammarLexer.tokens" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -61,7 +50,7 @@
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/arthur/eclipse-workspace/compiler/compiler-core/src",
-    "onboarding.tips.debug.path": "C:/Users/arthur/eclipse-workspace/compiler/compiler-core/src/main/java/compiler/Main.java",
+    "onboarding.tips.debug.path": "C:/Users/arthur/eclipse-workspace/compiler/compiler-api/src/main/java/compiler/Main.java",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -74,6 +63,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Main (1)">
+    <configuration name="CompilerApiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.java.com.compilerapi.CompilerApiApplication" />
+      <module name="compiler-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.java.com.compilerapi.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="compiler.main.Main" />
       <module name="compiler-core" />
@@ -103,6 +105,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main (1)" />
+        <item itemvalue="Application.CompilerApiApplication" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
