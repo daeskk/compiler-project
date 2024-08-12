@@ -8,18 +8,19 @@ import lombok.*;
 @Data
 public class Variable extends Symbol
 {
-	public static final int NUMBER = 0;
-	public static final int STRING = 1;
+	public static final int INTEGER = 0;
+	public static final int FLOAT   = 1;
+	public static final int STRING  = 2;
 	
 	private int type;
-	private String value;
+	private boolean initialized;
 
-	public Variable(int varType, String varName, String varValue)
+	public Variable(int varType, String varName, boolean initialized)
 	{
 		super(varName);
 
 		this.type = varType;
-		this.value = varValue;
+		this.initialized = initialized;
 	}
 
 	@Override
@@ -27,7 +28,7 @@ public class Variable extends Symbol
 	{
 		return "Variable{" +
 				"name='" + name + '\'' +
-				", value='" + value + '\'' +
+				", initialized=" + initialized +
 				", type=" + type +
 				'}';
 	}

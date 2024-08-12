@@ -1,7 +1,9 @@
 package compiler.datastructures;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,6 +31,21 @@ public class SymbolTable
 	public Variable getVariable(String symbolName)
 	{
 		return (Variable) this.symbolsMap.get(symbolName);
+	}
+
+	public void iterate()
+	{
+		symbolsMap.keySet().forEach(x -> System.out.println(symbolsMap.get(x)));
+	}
+
+	public List<Variable> generateList()
+	{
+		return new ArrayList<>(symbolsMap.keySet().stream().map(x -> (Variable) this.symbolsMap.get(x)).toList());
+	}
+
+	public List<Variable> generateUninitializedList()
+	{
+		return this.generateList().stream().filter(x -> !x.isInitialized()).toList();
 	}
 	
 	public boolean exists(String symbolName)

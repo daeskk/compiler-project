@@ -1,9 +1,11 @@
 programa 
 
-declare number a, b, c, d.
-a := 6.
+declare integer a, b, c, d.
+declare string waowMyString.
 
-b := 1.
+waowMyString := "helloioii".
+
+escreva(a).
 
 se (b > 5) entao {
 	escreva(b).

@@ -1,10 +1,10 @@
 package compiler.main;
 
+import compiler.core.IsiGrammarLexer;
+import compiler.core.IsiGrammarParser;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 
-import compiler.core.IsiGrammarLexer;
-import compiler.core.IsiGrammarParser;
 import compiler.exceptions.SemanticException;
 
 public class Main
@@ -16,17 +16,16 @@ public class Main
 			IsiGrammarLexer grammarLexer;
 			IsiGrammarParser grammarParser;
 			CommonTokenStream commonTokenStream;
-			
+
 			grammarLexer = new IsiGrammarLexer(CharStreams.fromFileName("input.isi"));
 			commonTokenStream = new CommonTokenStream(grammarLexer);
 			grammarParser = new IsiGrammarParser(commonTokenStream);
-			
+
 			System.out.println("Compilation started..");
-			
+
 			grammarParser.prog();
-			
-			System.out.println("Compilation successful.");	
-		
+
+			System.out.println("Compilation successful.");
 		} 
 		catch (SemanticException e) {
 			System.err.println("Semantic error occurred: " + e.getMessage());
