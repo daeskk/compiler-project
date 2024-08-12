@@ -8,22 +8,18 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IsiGrammar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/IsiGrammar.g4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/input.isi" beforeDir="false" afterPath="$PROJECT_DIR$/input.isi" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/core/IsiGrammar.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/core/IsiGrammar.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/core/IsiGrammarBaseListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/core/IsiGrammarLexer.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/core/IsiGrammarLexer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/core/IsiGrammarLexer.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/core/IsiGrammarListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/core/IsiGrammarParser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/datastructures/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/datastructures/SymbolTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/datastructures/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/datastructures/Variable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/exceptions/SemanticException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/exceptions/SemanticException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiler/core/IsiGrammar.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiler/core/IsiGrammar.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiler/core/IsiGrammarLexer.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiler/core/IsiGrammarLexer.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/core/IsiGrammar.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/core/IsiGrammar.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/core/IsiGrammar.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/core/IsiGrammar.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/core/IsiGrammarBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/core/IsiGrammarBaseListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/core/IsiGrammarLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/core/IsiGrammarLexer.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/core/IsiGrammarLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/core/IsiGrammarLexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/core/IsiGrammarLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/core/IsiGrammarLexer.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/core/IsiGrammarListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/core/IsiGrammarListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/core/IsiGrammarParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/core/IsiGrammarParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/core/IsiGrammar.interp" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/core/IsiGrammar.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/core/IsiGrammar.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/core/IsiGrammar.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/core/IsiGrammarLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/core/IsiGrammarLexer.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/core/IsiGrammarLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/core/IsiGrammarLexer.tokens" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

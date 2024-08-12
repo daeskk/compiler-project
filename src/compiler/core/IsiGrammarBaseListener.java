@@ -1,8 +1,8 @@
 // Generated from IsiGrammar.g4 by ANTLR 4.13.2
 package compiler.core;
 
-	import compiler.datastructures.*;
-	import compiler.exceptions.*;
+    import compiler.datastructures.*;
+    import compiler.exceptions.*;
 
     import java.util.HashSet;
     import java.util.Set;
@@ -140,6 +140,18 @@ public class IsiGrammarBaseListener implements IsiGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitCmdwhile(IsiGrammarParser.CmdwhileContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCmddowhile(IsiGrammarParser.CmddowhileContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCmddowhile(IsiGrammarParser.CmddowhileContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -2,8 +2,8 @@ grammar IsiGrammar;
 
 @header 
 {
-	import compiler.datastructures.*;
-	import compiler.exceptions.*;
+    import compiler.datastructures.*;
+    import compiler.exceptions.*;
 
     import java.util.HashSet;
     import java.util.Set;
@@ -88,6 +88,7 @@ cmd					: cmdread
 					| cmdexpr 
 					| cmdif 
 					| cmdwhile
+					| cmddowhile
 					;
 			
 cmdread				: 'leia' LEFTPARENTHESIS IDENTIFIER {
@@ -131,6 +132,10 @@ cmdexpr 			: IDENTIFIER {
 cmdwhile			: 'enquanto' LEFTPARENTHESIS expr RELOPERATOR expr RIGHTPARENTHESIS
 						OPENBRACKETS (cmd)+ CLOSEBRACKETS
 					;
+
+cmddowhile          : 'execute' OPENBRACKETS (cmd)+ CLOSEBRACKETS
+                      'enquanto' LEFTPARENTHESIS expr RELOPERATOR expr RIGHTPARENTHESIS DOT
+                    ;
 			
 term 				: factor ((MUL | DIV) factor)*
 					;

@@ -1,8 +1,8 @@
 // Generated from IsiGrammar.g4 by ANTLR 4.13.2
 package compiler.core;
 
-	import compiler.datastructures.*;
-	import compiler.exceptions.*;
+    import compiler.datastructures.*;
+    import compiler.exceptions.*;
 
     import java.util.HashSet;
     import java.util.Set;
@@ -115,6 +115,16 @@ public interface IsiGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCmdwhile(IsiGrammarParser.CmdwhileContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link IsiGrammarParser#cmddowhile}.
+	 * @param ctx the parse tree
+	 */
+	void enterCmddowhile(IsiGrammarParser.CmddowhileContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link IsiGrammarParser#cmddowhile}.
+	 * @param ctx the parse tree
+	 */
+	void exitCmddowhile(IsiGrammarParser.CmddowhileContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link IsiGrammarParser#term}.
 	 * @param ctx the parse tree

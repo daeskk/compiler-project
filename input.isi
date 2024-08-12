@@ -13,6 +13,11 @@ se (b > 5) entao {
 	escreva("waow if else").
 }
 
+execute {
+	escreva(b).
+	b := b + 5.
+} enquanto (b < 50).
+
 
 escreva("oi aqui esta o valor da soma").
 escreva(b).
