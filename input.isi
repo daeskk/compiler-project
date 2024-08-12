@@ -1,6 +1,7 @@
 programa 
 
-declare integer a, b, c, d.
+declare integer a, b, d.
+declare float c.
 declare string waowMyString.
 
 waowMyString := "helloioii".

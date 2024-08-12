@@ -44,18 +44,21 @@ grammar IsiGrammar;
                                             .map(x -> x.getName())
                                             .toList();
 
-        System.out.println("Warning: Uninitialized variables in use: " + uninitializedList);
+        if (uninitializedList.size() > 0) {
+            System.out.println("Warning: Uninitialized variables in use: " + uninitializedList);
+        }
+	}
+
+	public void verifyUnusedVariables() {
+        if(_unusedVariables.size() > 0) {
+            System.out.println("Warning: Unused variables: " + _unusedVariables);
+        }
 	}
 
 }
 
 prog 				: 'programa' (declare)* block 'fimprog' DOT {
-					    if(_unusedVariables.size() > 0) {
-					        System.out.println("Warning: Unused variables: " + _unusedVariables);
-					    }
-
-					    _symbolTable.iterate();
-
+                        verifyUnusedVariables();
 					    verifyUninitializedList();
 					}
 					;
@@ -125,7 +128,9 @@ cmdexpr 			: IDENTIFIER {
                         _exprLeftType = _var.getType();
 					} 
 					':=' expr DOT {
-
+					    if (_exprLeftType != _exprRightType){
+                            throw new SemanticException("Mismatched type assignment at variable '" + _varName + "'");
+                        }
 					}
 					;
 					
@@ -144,7 +149,10 @@ expr 				: term ((PLUS | MINUS) term)*
 					;
 						
 factor				: NUMBER {
-                        if (_exprRightType == null) {
+                        String numberString = _input.LT(-1).getText();
+                        if (numberString.contains(".")) {
+                            _exprRightType = Variable.FLOAT;
+                        } else {
                             _exprRightType = Variable.INTEGER;
                         }
                     }

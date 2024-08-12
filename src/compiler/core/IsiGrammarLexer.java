@@ -133,7 +133,15 @@ public class IsiGrammarLexer extends Lexer {
 	                                            .map(x -> x.getName())
 	                                            .toList();
 
-	        System.out.println("Warning: Uninitialized variables in use: " + uninitializedList);
+	        if (uninitializedList.size() > 0) {
+	            System.out.println("Warning: Uninitialized variables in use: " + uninitializedList);
+	        }
+		}
+
+		public void verifyUnusedVariables() {
+	        if(_unusedVariables.size() > 0) {
+	            System.out.println("Warning: Unused variables: " + _unusedVariables);
+	        }
 		}
 
 
