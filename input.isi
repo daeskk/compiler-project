@@ -8,13 +8,16 @@ waowMyString := "helloioii".
 
 escreva(a).
 
-se (b > 5) entao {
+se (b > 5) entao
+{
 	escreva(b).
-} senao {
+} senao
+{
 	escreva("waow if else").
 }
 
-execute {
+execute
+{
 	escreva(b).
 	b := b + 5.
 } enquanto (b < 50).
