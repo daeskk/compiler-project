@@ -1,10 +1,9 @@
 package compiler.datastructures;
 
+import compiler.exceptions.CodeGenerationException;
 import lombok.*;
 
 @EqualsAndHashCode(callSuper = true)
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
 public class Variable extends Symbol
 {
@@ -12,24 +11,52 @@ public class Variable extends Symbol
 	public static final int FLOAT   = 1;
 	public static final int STRING  = 2;
 	
-	private int type;
+	private int 	type;
 	private boolean initialized;
+	private boolean used;
 
-	public Variable(int varType, String varName, boolean initialized)
+	public Variable(int varType, String varName, boolean initialized, boolean used)
 	{
 		super(varName);
 
 		this.type = varType;
 		this.initialized = initialized;
+		this.used = used;
+	}
+
+	@Override
+	public String generateJavaDeclarationCode()
+	{
+		StringBuilder sb = new StringBuilder();
+
+		switch (type)
+		{
+            case Variable.INTEGER -> sb.append("int ");
+            case Variable.FLOAT -> sb.append("float ");
+            case Variable.STRING -> sb.append("String ");
+
+			default -> throw new CodeGenerationException("Unrecognized type");
+        }
+
+		sb.append(name).append(";");
+
+		return sb.toString();
+	}
+
+	@Override
+	public String generateClangDeclarationCode()
+	{
+		return "";
 	}
 
 	@Override
 	public String toString()
 	{
 		return "Variable{" +
-				"name='" + name + '\'' +
+				"type=" + type +
 				", initialized=" + initialized +
-				", type=" + type +
+				", used=" + used +
+				", name='" + name + '\'' +
 				'}';
 	}
 }

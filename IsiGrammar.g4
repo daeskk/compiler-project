@@ -4,6 +4,7 @@ grammar IsiGrammar;
 {
     import compiler.datastructures.*;
     import compiler.exceptions.*;
+    import compiler.ast.*;
 
     import java.util.HashSet;
     import java.util.Set;
@@ -15,19 +16,19 @@ grammar IsiGrammar;
 	private int _varType;
 	private Integer _exprLeftType, _exprRightType = null;
 
-	private String _varName;
-	private Set<String> _unusedVariables = new HashSet<>();
+	private String _varName, _exprLeftVarname;
 
 	private Symbol currentSymbol;
     private SymbolTable _symbolTable = new SymbolTable();
+
+    private CodeGenerator codeGenerator = new CodeGenerator();
 
 	public void addSymbol() {
 		if (_symbolTable.exists(_varName)) {
 			throw new SemanticException("variable '" + _varName + "' redeclared");	
 		}
 		
-		_symbolTable.add(new Variable(_varType, _varName, false));
-		_unusedVariables.add(_varName);
+		_symbolTable.add(new Variable(_varType, _varName, false, false));
 	}
 	
 	public void verifyIdentifier() {
@@ -36,22 +37,37 @@ grammar IsiGrammar;
 		}
 	}
 
+	public void verifyIfInitialized() {
+		Variable currentVar = (Variable) _symbolTable.get(_varName);
+
+        if (!currentVar.isInitialized()) {
+			throw new SemanticException("Variable '" + _varName + "' might not have been initialized");
+        }
+	}
+
+	public void setAsUsed() {
+	    Variable currentVar = (Variable) _symbolTable.get(_varName);
+		currentVar.setUsed(true);
+	}
+
 	public void verifyUninitializedList() {
         List<String> uninitializedList = _symbolTable
                                             .generateUninitializedList()
                                             .stream()
-                                            .filter(x -> !_unusedVariables.contains(x.getName()))
                                             .map(x -> x.getName())
                                             .toList();
 
         if (uninitializedList.size() > 0) {
-            System.out.println("Warning: Uninitialized variables in use: " + uninitializedList);
+            System.out.println("Warning: Uninitialized variables: " + uninitializedList);
         }
 	}
 
 	public void verifyUnusedVariables() {
-        if(_unusedVariables.size() > 0) {
-            System.out.println("Warning: Unused variables: " + _unusedVariables);
+        if(_symbolTable.generateUnusedList().size() > 0) {
+            System.out.println("Warning: Unused variables: " + _symbolTable.generateUnusedList()
+                                                                                .stream()
+                                                                                .map(x -> x.getName())
+                                                                                .toList());
         }
 	}
 
@@ -60,6 +76,10 @@ grammar IsiGrammar;
 prog 				: 'programa' (declare)* block 'fimprog' DOT {
                         verifyUnusedVariables();
 					    verifyUninitializedList();
+
+                        codeGenerator.setSymbolTable(_symbolTable);
+
+                        codeGenerator.generateTarget();
 					}
 					;
 
@@ -97,7 +117,8 @@ cmd					: cmdread
 cmdread				: 'leia' LEFTPARENTHESIS IDENTIFIER {
 						_varName = _input.LT(-1).getText();
 						verifyIdentifier();
-						_unusedVariables.remove(_varName);
+						verifyIfInitialized();
+						setAsUsed();
 					}
 					
 					RIGHTPARENTHESIS DOT
@@ -109,7 +130,8 @@ cmdwrite			: 'escreva' LEFTPARENTHESIS (
 					IDENTIFIER {
 						_varName = _input.LT(-1).getText();
 						verifyIdentifier();
-						_unusedVariables.remove(_varName);
+						verifyIfInitialized();
+						setAsUsed();
 					}
 					) 
 					RIGHTPARENTHESIS DOT
@@ -122,14 +144,16 @@ cmdif				: 'se' LEFTPARENTHESIS expr RELOPERATOR expr RIGHTPARENTHESIS
 
 cmdexpr 			: IDENTIFIER {
 						_varName = _input.LT(-1).getText();
+						_exprLeftVarname = _varName;
 						verifyIdentifier();
                         Variable _var = (Variable) _symbolTable.get(_input.LT(-1).getText());
                         _var.setInitialized(true);
                         _exprLeftType = _var.getType();
 					} 
 					':=' expr DOT {
-					    if (_exprLeftType != _exprRightType){
-                            throw new SemanticException("Mismatched type assignment at variable '" + _varName + "'");
+					    if (_exprLeftType != _exprRightType) {
+
+                            throw new SemanticException("Mismatched type assignment at variable '" + _exprLeftVarname + "'");
                         }
 					}
 					;
@@ -157,15 +181,16 @@ factor				: NUMBER {
                         }
                     }
                     | TEXT {
-                        if (_exprRightType == null) {
-                            _exprRightType = Variable.STRING;
-                        }
-
+                        _exprRightType = Variable.STRING;
                     }
 					| IDENTIFIER {
 						_varName = _input.LT(-1).getText();
 						verifyIdentifier();
-						_unusedVariables.remove(_varName);
+						verifyIfInitialized();
+						setAsUsed();
+
+                        Variable _var = (Variable) _symbolTable.get(_input.LT(-1).getText());
+                        _exprRightType = _var.getType();
 					}
 					| LEFTPARENTHESIS expr RIGHTPARENTHESIS
 					;

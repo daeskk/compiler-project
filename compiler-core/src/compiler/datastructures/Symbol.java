@@ -12,4 +12,7 @@ import lombok.ToString;
 public abstract class Symbol
 {
 	protected String name;
+
+	public abstract String generateJavaDeclarationCode();
+	public abstract String generateClangDeclarationCode();
 }

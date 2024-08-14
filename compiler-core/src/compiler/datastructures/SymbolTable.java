@@ -47,6 +47,11 @@ public class SymbolTable
 	{
 		return this.generateList().stream().filter(x -> !x.isInitialized()).toList();
 	}
+
+	public List<Variable> generateUnusedList()
+	{
+		return this.generateList().stream().filter(x -> !x.isUsed()).toList();
+	}
 	
 	public boolean exists(String symbolName)
 	{

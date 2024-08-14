@@ -3,6 +3,7 @@ package compiler.core;
 
     import compiler.datastructures.*;
     import compiler.exceptions.*;
+    import compiler.ast.*;
 
     import java.util.HashSet;
     import java.util.Set;

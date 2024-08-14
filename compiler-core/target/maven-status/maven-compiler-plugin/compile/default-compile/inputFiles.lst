@@ -1,9 +1,5 @@
 C:\Users\arthur\eclipse-workspace\compiler\compiler-core\src\compiler\datastructures\Variable.java
 C:\Users\arthur\eclipse-workspace\compiler\compiler-core\src\compiler\exceptions\SemanticException.java
 C:\Users\arthur\eclipse-workspace\compiler\compiler-core\src\compiler\datastructures\Symbol.java
-C:\Users\arthur\eclipse-workspace\compiler\compiler-core\src\compiler\core\IsiGrammarParser.java
 C:\Users\arthur\eclipse-workspace\compiler\compiler-core\src\compiler\main\Main.java
-C:\Users\arthur\eclipse-workspace\compiler\compiler-core\src\compiler\core\IsiGrammarBaseListener.java
-C:\Users\arthur\eclipse-workspace\compiler\compiler-core\src\compiler\core\IsiGrammarLexer.java
-C:\Users\arthur\eclipse-workspace\compiler\compiler-core\src\compiler\core\IsiGrammarListener.java
 C:\Users\arthur\eclipse-workspace\compiler\compiler-core\src\compiler\datastructures\SymbolTable.java

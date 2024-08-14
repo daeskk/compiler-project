@@ -5,9 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e74b6448-a45c-43ed-8af4-edf531993f81" name="Changes" comment="parser almost finished">
-      <change afterPath="$PROJECT_DIR$/compiler-api/src/main/java/com/compilerapi/CompilerApiController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/compiler-api/src/main/java/com/compilerapi/CompilerCompileFileRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/CodeGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/WriteCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/compiler-core/src/compiler/exceptions/CodeGenerationException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IsiGrammar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/IsiGrammar.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammar.interp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammar.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarBaseListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarLexer.interp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarLexer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarLexer.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/datastructures/Symbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/datastructures/Symbol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/datastructures/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/datastructures/SymbolTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/datastructures/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/datastructures/Variable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input.isi" beforeDir="false" afterPath="$PROJECT_DIR$/input.isi" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +36,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -53,7 +73,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
+    "settings.editor.selected.configurable": "Errors"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -136,6 +156,17 @@
     </task>
     <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="parser almost finished" />

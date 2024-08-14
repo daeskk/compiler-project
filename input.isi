@@ -1,17 +1,24 @@
-programa 
+programa
 
 declare integer a, b, d.
 declare float c.
-declare string waowMyString.
+declare string waowMyString, testString2.
 
 waowMyString := "helloioii".
+
+a := 1.
+b := 2.
+c := 5.5.
+
+testString2 := "helloioiiasdasd".
 
 escreva(a).
 
 se (b > 5) entao
 {
 	escreva(b).
-} senao
+}
+senao
 {
 	escreva("waow if else").
 }
@@ -30,7 +37,7 @@ c := 1.5.
 
 enquanto (c <= 111.11) {
 	escreva("legal").
-	
+
 	c := c + 15.9.
 }
 

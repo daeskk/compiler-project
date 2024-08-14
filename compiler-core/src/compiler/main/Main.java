@@ -1,5 +1,6 @@
 package compiler.main;
 
+import compiler.ast.CodeGenerator;
 import compiler.core.IsiGrammarLexer;
 import compiler.core.IsiGrammarParser;
 import org.antlr.v4.runtime.CharStreams;
@@ -11,8 +12,8 @@ public class Main
 {
 	public static void main(String[] args)
 	{
-		try 
-		{	
+		try
+		{
 			IsiGrammarLexer grammarLexer;
 			IsiGrammarParser grammarParser;
 			CommonTokenStream commonTokenStream;
@@ -26,15 +27,17 @@ public class Main
 			grammarParser.prog();
 
 			System.out.println("Compilation successful.");
-		} 
-		catch (SemanticException e)
+		} catch (SemanticException e)
 		{
 			System.err.println("Semantic error occurred: " + e.getMessage());
-		}
-		catch (Exception e) 
+		} catch (Exception e)
 		{
 			System.err.println("Generic error occurred: " + e.getMessage());
 		}
 	}
 
+	public static Object run()
+	{
+		return null;
+	}
 }
