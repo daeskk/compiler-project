@@ -8,6 +8,8 @@ package compiler.core;
     import java.util.HashSet;
     import java.util.Set;
     import java.util.List;
+    import java.util.ArrayList;
+    import java.util.Stack;
 
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
@@ -105,16 +107,24 @@ public class IsiGrammarLexer extends Lexer {
 		private int _varType;
 		private Integer _exprLeftType, _exprRightType = null;
 
-		private String _varName, _exprLeftVarname;
+		private String _varName, _exprLeftVarname, strExpr;
 
 		private Symbol currentSymbol;
 	    private SymbolTable _symbolTable = new SymbolTable();
+
+	    private Variable _currentVar;
+
+	    private IfCommand currentIfCommand;
+	    private DoWhileCommand currentDoWhileCommand;
+	    private WhileCommand currentWhileCommand;
+
+	    private Stack<List<Command>> commandStack = new Stack<>();
 
 	    private CodeGenerator codeGenerator = new CodeGenerator();
 
 		public void addSymbol() {
 			if (_symbolTable.exists(_varName)) {
-				throw new SemanticException("variable '" + _varName + "' redeclared");	
+				throw new SemanticException("variable '" + _varName + "' redeclared");
 			}
 			
 			_symbolTable.add(new Variable(_varType, _varName, false, false));

@@ -9,6 +9,8 @@ grammar IsiGrammar;
     import java.util.HashSet;
     import java.util.Set;
     import java.util.List;
+    import java.util.ArrayList;
+    import java.util.Stack;
 }
 
 @members 
@@ -16,16 +18,24 @@ grammar IsiGrammar;
 	private int _varType;
 	private Integer _exprLeftType, _exprRightType = null;
 
-	private String _varName, _exprLeftVarname;
+	private String _varName, _exprLeftVarname, strExpr;
 
 	private Symbol currentSymbol;
     private SymbolTable _symbolTable = new SymbolTable();
+
+    private Variable _currentVar;
+
+    private IfCommand currentIfCommand;
+    private DoWhileCommand currentDoWhileCommand;
+    private WhileCommand currentWhileCommand;
+
+    private Stack<List<Command>> commandStack = new Stack<>();
 
     private CodeGenerator codeGenerator = new CodeGenerator();
 
 	public void addSymbol() {
 		if (_symbolTable.exists(_varName)) {
-			throw new SemanticException("variable '" + _varName + "' redeclared");	
+			throw new SemanticException("variable '" + _varName + "' redeclared");
 		}
 		
 		_symbolTable.add(new Variable(_varType, _varName, false, false));
@@ -73,11 +83,15 @@ grammar IsiGrammar;
 
 }
 
-prog 				: 'programa' (declare)* block 'fimprog' DOT {
+prog 				: 'programa' IDENTIFIER {
+                        codeGenerator.setProgramName(_input.LT(-1).getText());
+                        commandStack.push(new ArrayList<>());
+                    } (declare)* block 'fimprog' DOT {
                         verifyUnusedVariables();
 					    verifyUninitializedList();
 
                         codeGenerator.setSymbolTable(_symbolTable);
+                        codeGenerator.setCommands(commandStack.pop());
 
                         codeGenerator.generateTarget();
 					}
@@ -117,59 +131,153 @@ cmd					: cmdread
 cmdread				: 'leia' LEFTPARENTHESIS IDENTIFIER {
 						_varName = _input.LT(-1).getText();
 						verifyIdentifier();
-						verifyIfInitialized();
 						setAsUsed();
+                        Variable _var = (Variable) _symbolTable.get(_varName);
+                        _var.setInitialized(true);
+
+					    commandStack.peek().add(new ReadCommand((Variable) _symbolTable.get(_varName)));
+
 					}
 					
 					RIGHTPARENTHESIS DOT
 					;
 
 cmdwrite			: 'escreva' LEFTPARENTHESIS (
-					TEXT 
+					TEXT {
+					    commandStack.peek().add(new WriteCommand(_input.LT(-1).getText()));
+					}
 					| 
 					IDENTIFIER {
 						_varName = _input.LT(-1).getText();
 						verifyIdentifier();
 						verifyIfInitialized();
 						setAsUsed();
+
+					    commandStack.peek().add(new WriteCommand(_varName));
 					}
 					) 
 					RIGHTPARENTHESIS DOT
 					;
 			
-cmdif				: 'se' LEFTPARENTHESIS expr RELOPERATOR expr RIGHTPARENTHESIS 
-						'entao' OPENBRACKETS (cmd)+ CLOSEBRACKETS 
-							('senao' OPENBRACKETS (cmd)+ CLOSEBRACKETS)?
+cmdif				: 'se' {
+                            commandStack.push(new ArrayList<>());
+                            strExpr = "";
+                            currentIfCommand = new IfCommand();
+                        }
+                        LEFTPARENTHESIS
+                        expr
+                        RELOPERATOR {
+                             strExpr += _input.LT(-1).getText();
+                        }
+                        expr
+                        RIGHTPARENTHESIS {
+                             currentIfCommand.setExpression(strExpr);
+                        }
+				        'entao' OPENBRACKETS (cmd)+ CLOSEBRACKETS {
+                             currentIfCommand.setTrueList(commandStack.pop());
+				        }
+                        ('senao' {
+                             commandStack.push(new ArrayList<>());
+                        }
+                        OPENBRACKETS
+                        (cmd)+
+                        CLOSEBRACKETS {
+                            currentIfCommand.setFalseList(commandStack.pop());
+                        }
+                        )
+                        ?
+                        {
+                            commandStack.peek().add(currentIfCommand);
+                        }
 					;
 
 cmdexpr 			: IDENTIFIER {
 						_varName = _input.LT(-1).getText();
 						_exprLeftVarname = _varName;
 						verifyIdentifier();
-                        Variable _var = (Variable) _symbolTable.get(_input.LT(-1).getText());
-                        _var.setInitialized(true);
-                        _exprLeftType = _var.getType();
+                        _currentVar = (Variable) _symbolTable.get(_input.LT(-1).getText());
+                        _exprLeftType = _currentVar.getType();
 					} 
-					':=' expr DOT {
+					':=' {
+					    strExpr = "";
+					}
+					expr
+					DOT {
 					    if (_exprLeftType != _exprRightType) {
 
                             throw new SemanticException("Mismatched type assignment at variable '" + _exprLeftVarname + "'");
                         }
+
+                        _currentVar.setInitialized(true);
+
+                        commandStack.peek().add(new AttrCommand(_varName, strExpr));
 					}
 					;
 					
-cmdwhile			: 'enquanto' LEFTPARENTHESIS expr RELOPERATOR expr RIGHTPARENTHESIS
-						OPENBRACKETS (cmd)+ CLOSEBRACKETS
+cmdwhile			: 'enquanto' {
+                        commandStack.push(new ArrayList<>());
+                        currentWhileCommand = new WhileCommand();
+                        strExpr = "";
+                    }
+                    LEFTPARENTHESIS
+                    expr
+                    RELOPERATOR {
+                        strExpr += _input.LT(-1).getText();
+                    }
+                    expr
+                    RIGHTPARENTHESIS {
+                        currentWhileCommand.setExpression(strExpr);
+                        currentWhileCommand.setCommandList(commandStack.pop());
+                        commandStack.peek().add(currentWhileCommand);
+                    }
+                    OPENBRACKETS
+                    (cmd)+
+                    CLOSEBRACKETS
 					;
 
-cmddowhile          : 'execute' OPENBRACKETS (cmd)+ CLOSEBRACKETS
-                      'enquanto' LEFTPARENTHESIS expr RELOPERATOR expr RIGHTPARENTHESIS DOT
+cmddowhile          : 'execute' {
+                        commandStack.push(new ArrayList<>());
+                        currentDoWhileCommand = new DoWhileCommand();
+                    }
+                    OPENBRACKETS
+                    (cmd)+
+                    CLOSEBRACKETS
+                    'enquanto' {
+                         strExpr = "";
+                    }
+                    LEFTPARENTHESIS
+                    expr
+                    RELOPERATOR {
+                         strExpr += _input.LT(-1).getText();
+                    }
+                    expr
+                    RIGHTPARENTHESIS {
+                        currentDoWhileCommand.setExpression(strExpr);
+                    }
+                    DOT {
+                        currentDoWhileCommand.setCommandList(commandStack.pop());
+                        commandStack.peek().add(currentDoWhileCommand);
+                    }
                     ;
 			
-term 				: factor ((MUL | DIV) factor)*
+term 				: factor {
+                        strExpr += _input.LT(-1).getText();
+                    }
+                    ((MUL | DIV) {
+                        strExpr += _input.LT(-1).getText();
+                    }
+                    factor {
+                        strExpr += _input.LT(-1).getText();
+                    }
+                    )*
 					;
 			
-expr 				: term ((PLUS | MINUS) term)*
+expr 				: term
+                    ((PLUS | MINUS) {
+                        strExpr += _input.LT(-1).getText();
+                    }
+                    term
+                    )*
 					;
 						
 factor				: NUMBER {

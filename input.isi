@@ -1,4 +1,4 @@
-programa
+programa MainTeste
 
 declare integer a, b, d.
 declare float c.
@@ -8,7 +8,8 @@ waowMyString := "helloioii".
 
 a := 1.
 b := 2.
-c := 5.5.
+
+leia(c).
 
 testString2 := "helloioiiasdasd".
 
