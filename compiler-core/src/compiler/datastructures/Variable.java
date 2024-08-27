@@ -8,7 +8,7 @@ import lombok.*;
 public class Variable extends Symbol
 {
 	public static final int INTEGER = 0;
-	public static final int FLOAT   = 1;
+	public static final int DOUBLE  = 1;
 	public static final int STRING  = 2;
 	
 	private int 	type;
@@ -32,8 +32,8 @@ public class Variable extends Symbol
 		switch (type)
 		{
             case Variable.INTEGER -> sb.append("int ");
-            case Variable.FLOAT -> sb.append("float ");
-            case Variable.STRING -> sb.append("String ");
+			case Variable.DOUBLE  -> sb.append("double ");
+            case Variable.STRING  -> sb.append("String ");
 
 			default -> throw new CodeGenerationException("Unrecognized type");
         }

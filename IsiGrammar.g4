@@ -113,7 +113,7 @@ declare 			: 'declare' vartype IDENTIFIER {
 					;
 					
 vartype				: 'integer' { _varType = Variable.INTEGER; }
-					| 'float'   { _varType = Variable.FLOAT;   }
+					| 'double'  { _varType = Variable.DOUBLE;  }
 					| 'string'  { _varType = Variable.STRING;  }
 			 		;
 
@@ -227,12 +227,13 @@ cmdwhile			: 'enquanto' {
                     expr
                     RIGHTPARENTHESIS {
                         currentWhileCommand.setExpression(strExpr);
-                        currentWhileCommand.setCommandList(commandStack.pop());
-                        commandStack.peek().add(currentWhileCommand);
                     }
                     OPENBRACKETS
                     (cmd)+
-                    CLOSEBRACKETS
+                    CLOSEBRACKETS {
+                        currentWhileCommand.setCommandList(commandStack.pop());
+                        commandStack.peek().add(currentWhileCommand);
+                    }
 					;
 
 cmddowhile          : 'execute' {
@@ -283,7 +284,7 @@ expr 				: term
 factor				: NUMBER {
                         String numberString = _input.LT(-1).getText();
                         if (numberString.contains(".")) {
-                            _exprRightType = Variable.FLOAT;
+                            _exprRightType = Variable.DOUBLE;
                         } else {
                             _exprRightType = Variable.INTEGER;
                         }

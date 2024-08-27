@@ -1,7 +1,7 @@
-programa MainTeste
+programa Main
 
 declare integer a, b, d.
-declare float c.
+declare double c.
 declare string waowMyString, testString2.
 
 waowMyString := "helloioii".

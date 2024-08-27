@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 @NoArgsConstructor
@@ -20,11 +22,20 @@ public class CodeGenerator
 
     public void generateTarget()
     {
-        System.out.println(commands);
+        try
+        {
+            String s = generateJavaFile();
 
-        String s = generateJavaFile();
+            System.out.println(s);
 
-        System.out.println(s);
+            FileWriter writer = new FileWriter(programName + ".java");
+            writer.write(s);
+            writer.close();
+        }
+        catch (IOException ignored)
+        {
+
+        }
     }
 
     private String generateJavaFile()

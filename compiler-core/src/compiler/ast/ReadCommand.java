@@ -21,7 +21,7 @@ public class ReadCommand implements Command
 
         switch (variable.getType()) {
             case Variable.INTEGER -> sb.append("_sc.nextInt(); _sc.nextLine();");
-            case Variable.FLOAT   -> sb.append("_sc.nextFloat(); _sc.nextLine();");
+            case Variable.DOUBLE  -> sb.append("_sc.nextDouble(); _sc.nextLine();");
             case Variable.STRING  -> sb.append("_sc.nextLine();");
         }
 
