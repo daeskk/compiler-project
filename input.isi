@@ -7,7 +7,10 @@ declare string waowMyString, testString2.
 waowMyString := "helloioii".
 
 a := 1.
-b := 2.
+b := 1 + 2 * 3 / a.
+
+escreva("a variavel b vale ").
+escreva(b).
 
 leia(c).
 
@@ -15,7 +18,7 @@ testString2 := "helloioiiasdasd".
 
 escreva(a).
 
-se (b > 5) entao
+se (b != 5) entao
 {
 	escreva(b).
 

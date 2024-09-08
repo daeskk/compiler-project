@@ -18,6 +18,7 @@ grammar IsiGrammar;
 	private int _varType;
 	private Integer _exprLeftType, _exprRightType = null;
 	private boolean _breakUsable = false;
+	private boolean _hasScanner = false;
 
 	private String _varName, _exprLeftVarname, top;
 
@@ -100,6 +101,7 @@ prog 				: 'programa' IDENTIFIER {
 
                         codeGenerator.setSymbolTable(_symbolTable);
                         codeGenerator.setCommands(commandStack.pop());
+                        codeGenerator.setHasScanner(_hasScanner);
 
                         codeGenerator.generateTarget();
 					}
@@ -145,6 +147,7 @@ cmdbreak            : 'parar' DOT {
                     ;
 
 cmdread				: 'leia' LEFTPARENTHESIS IDENTIFIER {
+                        _hasScanner = true;
 						_varName = _input.LT(-1).getText();
 						verifyIdentifier();
 						setAsUsed();
@@ -226,10 +229,8 @@ cmdexpr 			: IDENTIFIER {
 
                             throw new SemanticException("Mismatched type assignment at variable '" + _exprLeftVarname + "'");
                         }
-
                         _currentVar.setInitialized(true);
-
-                        commandStack.peek().add(new AttrCommand(_varName, expressionStack.pop()));
+                        commandStack.peek().add(new AttrCommand(_exprLeftVarname, expressionStack.pop()));
 					}
 					;
 					

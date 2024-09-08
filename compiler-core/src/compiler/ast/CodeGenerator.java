@@ -20,6 +20,8 @@ public class CodeGenerator
 
     private List<Command> commands;
 
+    private boolean hasScanner = false;
+
     public void generateTarget()
     {
         try
@@ -33,8 +35,6 @@ public class CodeGenerator
             writer.close();
 
             String clangCode = generateClangFile();
-
-            System.out.println(clangCode);
 
             writer = new FileWriter(programName + ".c");
             writer.write(clangCode);
@@ -53,7 +53,11 @@ public class CodeGenerator
         stringBuilder.append("import java.util.*; \n");
         stringBuilder.append("public class ").append(programName).append(" { \n");
         stringBuilder.append("\tpublic static void main(String args[]) {\n");
-        stringBuilder.append("\t\tScanner _sc = new Scanner(System.in);\n");
+
+        if (hasScanner) {
+            stringBuilder.append("\t\tScanner _sc = new Scanner(System.in);\n");
+        }
+
 
         symbolTable.generateList().forEach(x -> stringBuilder
                 .append("\t\t")
@@ -64,6 +68,10 @@ public class CodeGenerator
                 .append("\t\t")
                 .append(x.generateJavaCode())
                 .append("\n"));
+
+        if (hasScanner) {
+            stringBuilder.append("\t\t_sc.close();\n");
+        }
 
         stringBuilder.append("\n");
         stringBuilder.append("\t}\n");

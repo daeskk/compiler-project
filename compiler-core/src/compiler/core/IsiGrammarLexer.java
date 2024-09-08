@@ -107,6 +107,7 @@ public class IsiGrammarLexer extends Lexer {
 		private int _varType;
 		private Integer _exprLeftType, _exprRightType = null;
 		private boolean _breakUsable = false;
+		private boolean _hasScanner = false;
 
 		private String _varName, _exprLeftVarname, top;
 

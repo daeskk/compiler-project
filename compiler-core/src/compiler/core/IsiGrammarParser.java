@@ -114,6 +114,7 @@ public class IsiGrammarParser extends Parser {
 		private int _varType;
 		private Integer _exprLeftType, _exprRightType = null;
 		private boolean _breakUsable = false;
+		private boolean _hasScanner = false;
 
 		private String _varName, _exprLeftVarname, top;
 
@@ -259,6 +260,7 @@ public class IsiGrammarParser extends Parser {
 
 			                        codeGenerator.setSymbolTable(_symbolTable);
 			                        codeGenerator.setCommands(commandStack.pop());
+			                        codeGenerator.setHasScanner(_hasScanner);
 
 			                        codeGenerator.generateTarget();
 								
@@ -661,6 +663,7 @@ public class IsiGrammarParser extends Parser {
 			setState(86);
 			match(IDENTIFIER);
 
+			                        _hasScanner = true;
 									_varName = _input.LT(-1).getText();
 									verifyIdentifier();
 									setAsUsed();
@@ -959,10 +962,8 @@ public class IsiGrammarParser extends Parser {
 
 			                            throw new SemanticException("Mismatched type assignment at variable '" + _exprLeftVarname + "'");
 			                        }
-
 			                        _currentVar.setInitialized(true);
-
-			                        commandStack.peek().add(new AttrCommand(_varName, expressionStack.pop()));
+			                        commandStack.peek().add(new AttrCommand(_exprLeftVarname, expressionStack.pop()));
 								
 			}
 		}
