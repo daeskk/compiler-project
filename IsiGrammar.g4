@@ -17,8 +17,12 @@ grammar IsiGrammar;
 {	
 	private int _varType;
 	private Integer _exprLeftType, _exprRightType = null;
+	private boolean _breakUsable = false;
 
-	private String _varName, _exprLeftVarname, strExpr;
+	private String _varName, _exprLeftVarname, top;
+
+	private Stack<String> expressionStack = new Stack<>();
+	private Stack<IfCommand> ifCommandStack= new Stack<>();
 
 	private Symbol currentSymbol;
     private SymbolTable _symbolTable = new SymbolTable();
@@ -81,6 +85,10 @@ grammar IsiGrammar;
         }
 	}
 
+	public void checkBreak() {
+        if (!_breakUsable)
+            throw new SemanticException("Command 'parar' must be used inside a loop.");
+    }
 }
 
 prog 				: 'programa' IDENTIFIER {
@@ -120,14 +128,22 @@ vartype				: 'integer' { _varType = Variable.INTEGER; }
 block				: (cmd)+
 					;
 			
-cmd					: cmdread 
+cmd					: cmdread
 					| cmdwrite 
 					| cmdexpr 
-					| cmdif 
+					| cmdif
 					| cmdwhile
 					| cmddowhile
+				    | cmdbreak
 					;
-			
+
+cmdbreak            : 'parar' DOT {
+                        checkBreak();
+                        BreakCommand cmdBreak = new BreakCommand();
+                        commandStack.peek().add(cmdBreak);
+                        }
+                    ;
+
 cmdread				: 'leia' LEFTPARENTHESIS IDENTIFIER {
 						_varName = _input.LT(-1).getText();
 						verifyIdentifier();
@@ -161,20 +177,23 @@ cmdwrite			: 'escreva' LEFTPARENTHESIS (
 			
 cmdif				: 'se' {
                             commandStack.push(new ArrayList<>());
-                            strExpr = "";
-                            currentIfCommand = new IfCommand();
+                            ifCommandStack.push(new IfCommand());
+                            expressionStack.push("");
                         }
                         LEFTPARENTHESIS
                         expr
                         RELOPERATOR {
-                             strExpr += _input.LT(-1).getText();
+                             top = expressionStack.pop();
+                             top += _input.LT(-1).getText();
+
+                             expressionStack.push(top);
                         }
                         expr
                         RIGHTPARENTHESIS {
-                             currentIfCommand.setExpression(strExpr);
+                             ifCommandStack.peek().setExpression(expressionStack.pop());
                         }
 				        'entao' OPENBRACKETS (cmd)+ CLOSEBRACKETS {
-                             currentIfCommand.setTrueList(commandStack.pop());
+                             ifCommandStack.peek().setTrueList(commandStack.pop());
 				        }
                         ('senao' {
                              commandStack.push(new ArrayList<>());
@@ -182,12 +201,12 @@ cmdif				: 'se' {
                         OPENBRACKETS
                         (cmd)+
                         CLOSEBRACKETS {
-                            currentIfCommand.setFalseList(commandStack.pop());
+                            ifCommandStack.peek().setFalseList(commandStack.pop());
                         }
                         )
                         ?
                         {
-                            commandStack.peek().add(currentIfCommand);
+                            commandStack.peek().add(ifCommandStack.pop());
                         }
 					;
 
@@ -199,7 +218,7 @@ cmdexpr 			: IDENTIFIER {
                         _exprLeftType = _currentVar.getType();
 					} 
 					':=' {
-					    strExpr = "";
+                        expressionStack.push("");
 					}
 					expr
 					DOT {
@@ -210,72 +229,94 @@ cmdexpr 			: IDENTIFIER {
 
                         _currentVar.setInitialized(true);
 
-                        commandStack.peek().add(new AttrCommand(_varName, strExpr));
+                        commandStack.peek().add(new AttrCommand(_varName, expressionStack.pop()));
 					}
 					;
 					
 cmdwhile			: 'enquanto' {
                         commandStack.push(new ArrayList<>());
                         currentWhileCommand = new WhileCommand();
-                        strExpr = "";
+                        expressionStack.push("");
+                        _breakUsable = true;
                     }
                     LEFTPARENTHESIS
                     expr
                     RELOPERATOR {
-                        strExpr += _input.LT(-1).getText();
+                         top = expressionStack.pop();
+                         top += _input.LT(-1).getText();
+
+                         expressionStack.push(top);
                     }
                     expr
                     RIGHTPARENTHESIS {
-                        currentWhileCommand.setExpression(strExpr);
+                        currentWhileCommand.setExpression(expressionStack.pop());
                     }
                     OPENBRACKETS
                     (cmd)+
                     CLOSEBRACKETS {
                         currentWhileCommand.setCommandList(commandStack.pop());
                         commandStack.peek().add(currentWhileCommand);
+                        _breakUsable = false;
                     }
 					;
 
 cmddowhile          : 'execute' {
                         commandStack.push(new ArrayList<>());
                         currentDoWhileCommand = new DoWhileCommand();
+                        _breakUsable = true;
                     }
                     OPENBRACKETS
                     (cmd)+
                     CLOSEBRACKETS
                     'enquanto' {
-                         strExpr = "";
+                        expressionStack.push("");
                     }
                     LEFTPARENTHESIS
                     expr
                     RELOPERATOR {
-                         strExpr += _input.LT(-1).getText();
+                         top = expressionStack.pop();
+                         top += _input.LT(-1).getText();
+
+                         expressionStack.push(top);
                     }
                     expr
                     RIGHTPARENTHESIS {
-                        currentDoWhileCommand.setExpression(strExpr);
+                        currentDoWhileCommand.setExpression(expressionStack.pop());
                     }
                     DOT {
                         currentDoWhileCommand.setCommandList(commandStack.pop());
                         commandStack.peek().add(currentDoWhileCommand);
+                        _breakUsable = false;
                     }
                     ;
 			
 term 				: factor {
-                        strExpr += _input.LT(-1).getText();
+                         top = expressionStack.pop();
+                         top += _input.LT(-1).getText();
+
+                         expressionStack.push(top);
                     }
                     ((MUL | DIV) {
-                        strExpr += _input.LT(-1).getText();
+                         top = expressionStack.pop();
+                         top += _input.LT(-1).getText();
+
+                         expressionStack.push(top);
                     }
                     factor {
-                        strExpr += _input.LT(-1).getText();
+                         top = expressionStack.pop();
+                         top += _input.LT(-1).getText();
+
+                         expressionStack.push(top);
                     }
                     )*
 					;
 			
 expr 				: term
                     ((PLUS | MINUS) {
-                        strExpr += _input.LT(-1).getText();
+                         top = expressionStack.pop();
+                         top += _input.LT(-1).getText();
+
+                         expressionStack.push(top);
                     }
                     term
                     )*

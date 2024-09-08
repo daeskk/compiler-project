@@ -46,7 +46,24 @@ public class Variable extends Symbol
 	@Override
 	public String generateClangDeclarationCode()
 	{
-		return "";
+		StringBuilder sb = new StringBuilder();
+
+		switch (type)
+		{
+			case Variable.INTEGER -> sb.append("int ");
+			case Variable.DOUBLE  -> sb.append("float ");
+
+			case Variable.STRING  -> {
+				sb.append("char ").append(name).append("[2048];");
+				return sb.toString();
+			}
+
+			default -> throw new CodeGenerationException("Unrecognized type");
+		}
+
+		sb.append(name).append(";");
+
+		return sb.toString();
 	}
 
 	@Override

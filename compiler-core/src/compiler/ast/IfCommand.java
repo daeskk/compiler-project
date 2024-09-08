@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -12,8 +13,8 @@ import java.util.List;
 public class IfCommand implements Command
 {
     private String expression;
-    private List<Command> trueList;
-    private List<Command> falseList;
+    private List<Command> trueList = new ArrayList<>();
+    private List<Command> falseList = new ArrayList<>();
 
 
 

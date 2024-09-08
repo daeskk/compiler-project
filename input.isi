@@ -18,26 +18,35 @@ escreva(a).
 se (b > 5) entao
 {
 	escreva(b).
-}
-senao
-{
-	escreva("waow if else").
+
+	se (b == 3) entao {
+	    escreva("b igual a 3").
+
+        se (b + 1 == 4) entao {
+            escreva("b igual a 4").
+        }
+	}
 }
 
 execute
 {
 	escreva(b).
-	b := b + 5.
+	b := b + 5 * 3.
 } enquanto (b < 50).
 
 
 escreva("oi aqui esta o valor da soma").
 escreva(b).
 
-c := 1.5.
+c := 20.0.
 
 enquanto (c <= 111.11) {
 	escreva("legal").
+
+		se (c > 112.0) entao {
+    	    escreva("passou parando").
+    	    parar.
+    	}
 
 	c := c + 15.9.
 }

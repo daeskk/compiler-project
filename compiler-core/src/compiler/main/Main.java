@@ -1,6 +1,5 @@
 package compiler.main;
 
-import compiler.ast.CodeGenerator;
 import compiler.core.IsiGrammarLexer;
 import compiler.core.IsiGrammarParser;
 import org.antlr.v4.runtime.CharStreams;
@@ -36,7 +35,7 @@ public class Main
 		}
 	}
 
-	public static Object run()
+	public static Object run(CompilerCompileFileRequest compilerCompileFileRequest)
 	{
 		return null;
 	}

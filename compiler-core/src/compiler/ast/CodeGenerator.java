@@ -24,12 +24,20 @@ public class CodeGenerator
     {
         try
         {
-            String s = generateJavaFile();
+            String javaCode = generateJavaFile();
 
-            System.out.println(s);
+            System.out.println(javaCode);
 
             FileWriter writer = new FileWriter(programName + ".java");
-            writer.write(s);
+            writer.write(javaCode);
+            writer.close();
+
+            String clangCode = generateClangFile();
+
+            System.out.println(clangCode);
+
+            writer = new FileWriter(programName + ".c");
+            writer.write(clangCode);
             writer.close();
         }
         catch (IOException ignored)
@@ -74,6 +82,11 @@ public class CodeGenerator
         symbolTable.generateList().forEach(x -> stringBuilder
                 .append("\t")
                 .append(x.generateClangDeclarationCode())
+                .append("\n"));
+
+        commands.forEach(x -> stringBuilder
+                .append("\t\t")
+                .append(x.generateClangCode())
                 .append("\n"));
 
         stringBuilder.append("\n");
