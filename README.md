@@ -20,8 +20,8 @@ https://www.youtube.com/
 		<td>11202232206</td>
 	</tr>
 	<tr>
-		<td>Integrante 2</td>
-		<td></td>
+		<td>Nayara Valéria Joca Gonçalves</td>
+		<td>11201921427</td>
 	</tr>
 	</tbody>
 </table>
