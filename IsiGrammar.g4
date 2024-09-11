@@ -39,6 +39,8 @@ grammar IsiGrammar;
 
     private CodeGenerator codeGenerator = new CodeGenerator();
 
+    private List<String> warnings = new ArrayList<>();
+
     public CodeGenerator getCodeGenerator() {
         return codeGenerator;
     }
@@ -79,6 +81,7 @@ grammar IsiGrammar;
 
         if (uninitializedList.size() > 0) {
             System.out.println("Warning: Uninitialized variables: " + uninitializedList);
+            warning.add("Warning: Uninitialized variables: " + uninitializedList.stream().map(x -> String.valueOf(x).collect(Collectors.joining(", ", "[", "]"));
         }
 	}
 

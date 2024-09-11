@@ -2,6 +2,7 @@ package compiler.main;
 
 import compiler.core.IsiGrammarLexer;
 import compiler.core.IsiGrammarParser;
+import compiler.exceptions.CodeGenerationException;
 import main.java.dto.CompileFileRequest;
 import main.java.dto.CompileFileResponse;
 import main.java.enums.ProgrammingLanguage;
@@ -11,6 +12,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import compiler.exceptions.SemanticException;
 
 import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main
@@ -51,9 +53,9 @@ public class Main
 
 	public static CompileFileResponse run(CompileFileRequest compileFileRequest)
 	{
-		List<String> warnings;
-		String errorMessage;
-		String sourceCode;
+		List<String> warnings = new ArrayList<>();
+		String errorMessage = "";
+		String sourceCode = "";
 
 		try
 		{
@@ -67,13 +69,18 @@ public class Main
 
 			IsiGrammarParser.ProgContext context = grammarParser.prog();
 
-			String code = context.results.get(compileFileRequest.programmingLanguage().ordinal());
-
-
-		} catch (Exception ignored)
+			sourceCode = context.results.get(compileFileRequest.programmingLanguage().ordinal());
+		} catch (SemanticException e)
+		{
+			errorMessage = "Semantic error occurred: " + e.getMessage();
+		} catch (CodeGenerationException e)
+		{
+			errorMessage = "Code generation error occurred: " + e.getMessage();
+		} catch (Exception e)
 		{
 			errorMessage = "An unexpected error occurred.";
 		}
-        return null;
+		
+        return new CompileFileResponse(sourceCode, warnings, errorMessage);
     }
 }
