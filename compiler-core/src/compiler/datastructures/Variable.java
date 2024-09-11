@@ -44,7 +44,7 @@ public class Variable extends Symbol
 	}
 
 	@Override
-	public String generateClangDeclarationCode()
+	public String generateCppDeclarationCode()
 	{
 		StringBuilder sb = new StringBuilder();
 
@@ -52,11 +52,7 @@ public class Variable extends Symbol
 		{
 			case Variable.INTEGER -> sb.append("int ");
 			case Variable.DOUBLE  -> sb.append("float ");
-
-			case Variable.STRING  -> {
-				sb.append("char ").append(name).append("[2048];");
-				return sb.toString();
-			}
+			case Variable.STRING  -> sb.append("string ");
 
 			default -> throw new CodeGenerationException("Unrecognized type");
 		}

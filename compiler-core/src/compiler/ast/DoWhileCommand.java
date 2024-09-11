@@ -29,7 +29,7 @@ public class DoWhileCommand implements Command
     }
 
     @Override
-    public String generateClangCode()
+    public String generateCppCode()
     {
         return "";
     }

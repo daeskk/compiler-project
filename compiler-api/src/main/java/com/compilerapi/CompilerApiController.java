@@ -1,7 +1,6 @@
 package main.java.com.compilerapi;
 
-import compiler.main.CompilerCompileFileRequest;
-import compiler.main.Main;
+import main.java.dto.CompileFileRequest;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,9 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class CompilerApiController
 {
     @PostMapping
-    public void compileFile(@RequestBody CompilerCompileFileRequest compilerCompileFileRequest)
+    public void compileFile(@RequestBody CompileFileRequest compileFileRequest)
     {
-        Object o = Main.run();
 
 
     }

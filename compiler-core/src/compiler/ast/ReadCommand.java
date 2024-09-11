@@ -30,7 +30,7 @@ public class ReadCommand implements Command
     }
 
     @Override
-    public String generateClangCode()
+    public String generateCppCode()
     {
         return "";
     }

@@ -2,6 +2,7 @@ grammar IsiGrammar;
 
 @header 
 {
+    import main.java.enums.*;
     import compiler.datastructures.*;
     import compiler.exceptions.*;
     import compiler.ast.*;
@@ -37,6 +38,10 @@ grammar IsiGrammar;
     private Stack<List<Command>> commandStack = new Stack<>();
 
     private CodeGenerator codeGenerator = new CodeGenerator();
+
+    public CodeGenerator getCodeGenerator() {
+        return codeGenerator;
+    }
 
 	public void addSymbol() {
 		if (_symbolTable.exists(_varName)) {
@@ -92,7 +97,7 @@ grammar IsiGrammar;
     }
 }
 
-prog 				: 'programa' IDENTIFIER {
+prog returns [List<String> results] : 'programa' IDENTIFIER {
                         codeGenerator.setProgramName(_input.LT(-1).getText());
                         commandStack.push(new ArrayList<>());
                     } (declare)* block 'fimprog' DOT {
@@ -103,7 +108,10 @@ prog 				: 'programa' IDENTIFIER {
                         codeGenerator.setCommands(commandStack.pop());
                         codeGenerator.setHasScanner(_hasScanner);
 
-                        codeGenerator.generateTarget();
+                        $results = new ArrayList<>();
+
+                        $results.add(codeGenerator.generateTarget(ProgrammingLanguage.JAVA));
+					    $results.add(codeGenerator.generateTarget(ProgrammingLanguage.CPP));
 					}
 					;
 

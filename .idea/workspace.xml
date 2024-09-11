@@ -5,10 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e74b6448-a45c-43ed-8af4-edf531993f81" name="Changes" comment="parser almost finished">
+      <change afterPath="$PROJECT_DIR$/shared/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/src/main/java/dto/CompileFileRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/src/main/java/dto/CompileFileResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/src/main/java/enums/ProgrammingLanguage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input.isi" beforeDir="false" afterPath="$PROJECT_DIR$/input.isi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IsiGrammar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/IsiGrammar.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-api/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-api/src/main/java/com/compilerapi/CompilerApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-api/src/main/java/com/compilerapi/CompilerApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-api/src/main/java/com/compilerapi/CompilerCompileFileRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/AttrCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/AttrCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/BreakCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/BreakCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/CodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/CodeGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/DoWhileCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/DoWhileCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/IfCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/IfCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/ReadCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/ReadCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/WhileCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/WhileCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/WriteCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/WriteCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarBaseListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarLexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/datastructures/Symbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/datastructures/Symbol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/datastructures/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/datastructures/Variable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/main/CompilerCompileFileRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +48,8 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="Record" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -38,26 +68,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.CompilerApiApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main (1).executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.compiler [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.compiler [install].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/arthur/eclipse-workspace/compiler/compiler-core/src&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/arthur/eclipse-workspace/compiler/compiler-api/src/main/java/compiler/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.CompilerApiApplication.executor": "Run",
+    "Application.Main (1).executor": "Run",
+    "Application.Main.executor": "Run",
+    "Maven.compiler [clean].executor": "Run",
+    "Maven.compiler [install].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/arthur/eclipse-workspace/compiler/compiler-core/src",
+    "onboarding.tips.debug.path": "C:/Users/arthur/eclipse-workspace/compiler/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "Errors"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\arthur\eclipse-workspace\compiler\compiler-core\src" />
@@ -161,6 +191,11 @@
           <url>file://$PROJECT_DIR$/compiler-core/src/main/java/compiler/Main.java</url>
           <line>16</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/shared/src/main/java/compiler/Main.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -19,7 +19,7 @@ public class AttrCommand implements Command
     }
 
     @Override
-    public String generateClangCode()
+    public String generateCppCode()
     {
         return "";
     }

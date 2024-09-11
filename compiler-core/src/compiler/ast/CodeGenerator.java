@@ -4,6 +4,7 @@ import compiler.datastructures.SymbolTable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import main.java.enums.ProgrammingLanguage;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -22,28 +23,21 @@ public class CodeGenerator
 
     private boolean hasScanner = false;
 
-    public void generateTarget()
+    public String generateTarget(ProgrammingLanguage programmingLanguage)
     {
-        try
+        switch (programmingLanguage)
         {
-            String javaCode = generateJavaFile();
-
-            System.out.println(javaCode);
-
-            FileWriter writer = new FileWriter(programName + ".java");
-            writer.write(javaCode);
-            writer.close();
-
-            String clangCode = generateClangFile();
-
-            writer = new FileWriter(programName + ".c");
-            writer.write(clangCode);
-            writer.close();
+            case ProgrammingLanguage.JAVA ->
+            {
+                return generateJavaFile();
+            }
+            case ProgrammingLanguage.CPP ->
+            {
+                return generateCppFile();
+            }
         }
-        catch (IOException ignored)
-        {
 
-        }
+        return "";
     }
 
     private String generateJavaFile()
@@ -80,21 +74,21 @@ public class CodeGenerator
         return stringBuilder.toString();
     }
 
-    private String generateClangFile()
+    private String generateCppFile()
     {
         StringBuilder stringBuilder = new StringBuilder();
 
-        stringBuilder.append("#include <stdio.h>; \n");
+        stringBuilder.append("#include <iostream>; \n");
         stringBuilder.append("int main() { \n");
 
         symbolTable.generateList().forEach(x -> stringBuilder
                 .append("\t")
-                .append(x.generateClangDeclarationCode())
+                .append(x.generateCppDeclarationCode())
                 .append("\n"));
 
         commands.forEach(x -> stringBuilder
                 .append("\t\t")
-                .append(x.generateClangCode())
+                .append(x.generateCppCode())
                 .append("\n"));
 
         stringBuilder.append("\n");

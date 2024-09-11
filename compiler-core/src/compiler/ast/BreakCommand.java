@@ -14,7 +14,7 @@ public class BreakCommand implements Command
     }
 
     @Override
-    public String generateClangCode()
+    public String generateCppCode()
     {
         return "break;\n";
     }

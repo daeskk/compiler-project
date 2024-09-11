@@ -41,7 +41,7 @@ public class IfCommand implements Command
     }
 
     @Override
-    public String generateClangCode()
+    public String generateCppCode()
     {
         return "";
     }

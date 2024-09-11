@@ -18,7 +18,7 @@ public class WriteCommand implements Command
     }
 
     @Override
-    public String generateClangCode()
+    public String generateCppCode()
     {
         return "";
     }

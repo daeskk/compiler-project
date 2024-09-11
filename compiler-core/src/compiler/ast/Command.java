@@ -4,5 +4,5 @@ public interface Command
 {
     String generateJavaCode();
 
-    String generateClangCode();
+    String generateCppCode();
 }

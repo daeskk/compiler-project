@@ -1,6 +1,7 @@
 // Generated from IsiGrammar.g4 by ANTLR 4.13.2
 package compiler.core;
 
+    import main.java.enums.*;
     import compiler.datastructures.*;
     import compiler.exceptions.*;
     import compiler.ast.*;
@@ -134,6 +135,10 @@ public class IsiGrammarParser extends Parser {
 
 	    private CodeGenerator codeGenerator = new CodeGenerator();
 
+	    public CodeGenerator getCodeGenerator() {
+	        return codeGenerator;
+	    }
+
 		public void addSymbol() {
 			if (_symbolTable.exists(_varName)) {
 				throw new SemanticException("variable '" + _varName + "' redeclared");
@@ -194,6 +199,7 @@ public class IsiGrammarParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ProgContext extends ParserRuleContext {
+		public List<String> results;
 		public TerminalNode IDENTIFIER() { return getToken(IsiGrammarParser.IDENTIFIER, 0); }
 		public BlockContext block() {
 			return getRuleContext(BlockContext.class,0);
@@ -262,7 +268,10 @@ public class IsiGrammarParser extends Parser {
 			                        codeGenerator.setCommands(commandStack.pop());
 			                        codeGenerator.setHasScanner(_hasScanner);
 
-			                        codeGenerator.generateTarget();
+			                        ((ProgContext)_localctx).results =  new ArrayList<>();
+
+			                        _localctx.results.add(codeGenerator.generateTarget(ProgrammingLanguage.JAVA));
+								    _localctx.results.add(codeGenerator.generateTarget(ProgrammingLanguage.CPP));
 								
 			}
 		}

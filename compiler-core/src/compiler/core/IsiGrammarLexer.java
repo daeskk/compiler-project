@@ -1,6 +1,7 @@
 // Generated from IsiGrammar.g4 by ANTLR 4.13.2
 package compiler.core;
 
+    import main.java.enums.*;
     import compiler.datastructures.*;
     import compiler.exceptions.*;
     import compiler.ast.*;
@@ -126,6 +127,10 @@ public class IsiGrammarLexer extends Lexer {
 	    private Stack<List<Command>> commandStack = new Stack<>();
 
 	    private CodeGenerator codeGenerator = new CodeGenerator();
+
+	    public CodeGenerator getCodeGenerator() {
+	        return codeGenerator;
+	    }
 
 		public void addSymbol() {
 			if (_symbolTable.exists(_varName)) {

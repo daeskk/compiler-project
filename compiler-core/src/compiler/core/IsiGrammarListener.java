@@ -1,6 +1,7 @@
 // Generated from IsiGrammar.g4 by ANTLR 4.13.2
 package compiler.core;
 
+    import main.java.enums.*;
     import compiler.datastructures.*;
     import compiler.exceptions.*;
     import compiler.ast.*;

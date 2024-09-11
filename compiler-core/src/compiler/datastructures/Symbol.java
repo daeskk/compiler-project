@@ -14,5 +14,5 @@ public abstract class Symbol
 	protected String name;
 
 	public abstract String generateJavaDeclarationCode();
-	public abstract String generateClangDeclarationCode();
+	public abstract String generateCppDeclarationCode();
 }
