@@ -7,8 +7,12 @@
     <list default="true" id="e74b6448-a45c-43ed-8af4-edf531993f81" name="Changes" comment="parser almost finished">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IsiGrammar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/IsiGrammar.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-api/src/main/java/com/compilerapi/CompilerApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-api/src/main/java/com/compilerapi/CompilerApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarBaseListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarLexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/dto/CompileFileResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/dto/CompileFileResponse.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +69,7 @@
       <recent name="C:\Users\arthur\eclipse-workspace\compiler\compiler-core\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main (1)">
+  <component name="RunManager" selected="Application.CompilerApiApplication">
     <configuration name="CompilerApiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.java.com.compilerapi.CompilerApiApplication" />
       <module name="compiler-api" />
@@ -107,8 +111,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.CompilerApiApplication" />
+        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>

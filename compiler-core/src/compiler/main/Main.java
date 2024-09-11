@@ -14,6 +14,8 @@ import compiler.exceptions.SemanticException;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main
 {
@@ -53,16 +55,15 @@ public class Main
 
 	public static CompileFileResponse run(CompileFileRequest compileFileRequest)
 	{
-		List<String> warnings = new ArrayList<>();
-		String errorMessage = "";
+        String errorMessage = "";
 		String sourceCode = "";
+
+		IsiGrammarLexer grammarLexer;
+		IsiGrammarParser grammarParser = null;
+		CommonTokenStream commonTokenStream;
 
 		try
 		{
-			IsiGrammarLexer grammarLexer;
-			IsiGrammarParser grammarParser;
-			CommonTokenStream commonTokenStream;
-
 			grammarLexer = new IsiGrammarLexer(CharStreams.fromString(compileFileRequest.sourceCode()));
 			commonTokenStream = new CommonTokenStream(grammarLexer);
 			grammarParser = new IsiGrammarParser(commonTokenStream);
@@ -80,7 +81,10 @@ public class Main
 		{
 			errorMessage = "An unexpected error occurred.";
 		}
-		
-        return new CompileFileResponse(sourceCode, warnings, errorMessage);
+
+        return new CompileFileResponse(
+				sourceCode,
+				grammarParser != null ? grammarParser.getWarningList() : new ArrayList<>(),
+				errorMessage);
     }
 }

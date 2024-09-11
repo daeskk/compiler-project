@@ -6,6 +6,8 @@ package compiler.core;
     import compiler.exceptions.*;
     import compiler.ast.*;
 
+    import java.util.stream.*;
+
     import java.util.HashSet;
     import java.util.Set;
     import java.util.List;

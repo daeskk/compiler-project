@@ -7,6 +7,8 @@ grammar IsiGrammar;
     import compiler.exceptions.*;
     import compiler.ast.*;
 
+    import java.util.stream.*;
+
     import java.util.HashSet;
     import java.util.Set;
     import java.util.List;
@@ -45,6 +47,10 @@ grammar IsiGrammar;
         return codeGenerator;
     }
 
+    public List<String> getWarningList() {
+        return warnings;
+    }
+
 	public void addSymbol() {
 		if (_symbolTable.exists(_varName)) {
 			throw new SemanticException("variable '" + _varName + "' redeclared");
@@ -81,16 +87,19 @@ grammar IsiGrammar;
 
         if (uninitializedList.size() > 0) {
             System.out.println("Warning: Uninitialized variables: " + uninitializedList);
-            warning.add("Warning: Uninitialized variables: " + uninitializedList.stream().map(x -> String.valueOf(x).collect(Collectors.joining(", ", "[", "]"));
+            warnings.add("Warning: Uninitialized variables: " + uninitializedList.stream().map(x -> String.valueOf(x)).collect(Collectors.joining(", ", "[", "]")));
         }
 	}
 
 	public void verifyUnusedVariables() {
         if(_symbolTable.generateUnusedList().size() > 0) {
-            System.out.println("Warning: Unused variables: " + _symbolTable.generateUnusedList()
-                                                                                .stream()
-                                                                                .map(x -> x.getName())
-                                                                                .toList());
+            List<String> unusedListVariables = _symbolTable.generateUnusedList()
+                                                               .stream()
+                                                               .map(x -> x.getName())
+                                                               .toList();
+            System.out.println("Warning: Unused variables: " + unusedListVariables);
+            warnings.add("Warning: Unused variables: " + unusedListVariables.stream().collect(Collectors.joining(", ", "[", "]")));
+
         }
 	}
 

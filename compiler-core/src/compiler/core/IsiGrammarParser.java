@@ -6,6 +6,8 @@ package compiler.core;
     import compiler.exceptions.*;
     import compiler.ast.*;
 
+    import java.util.stream.*;
+
     import java.util.HashSet;
     import java.util.Set;
     import java.util.List;
@@ -135,8 +137,14 @@ public class IsiGrammarParser extends Parser {
 
 	    private CodeGenerator codeGenerator = new CodeGenerator();
 
+	    private List<String> warnings = new ArrayList<>();
+
 	    public CodeGenerator getCodeGenerator() {
 	        return codeGenerator;
+	    }
+
+	    public List<String> getWarningList() {
+	        return warnings;
 	    }
 
 		public void addSymbol() {
@@ -175,15 +183,19 @@ public class IsiGrammarParser extends Parser {
 
 	        if (uninitializedList.size() > 0) {
 	            System.out.println("Warning: Uninitialized variables: " + uninitializedList);
+	            warnings.add("Warning: Uninitialized variables: " + uninitializedList.stream().map(x -> String.valueOf(x)).collect(Collectors.joining(", ", "[", "]")));
 	        }
 		}
 
 		public void verifyUnusedVariables() {
 	        if(_symbolTable.generateUnusedList().size() > 0) {
-	            System.out.println("Warning: Unused variables: " + _symbolTable.generateUnusedList()
-	                                                                                .stream()
-	                                                                                .map(x -> x.getName())
-	                                                                                .toList());
+	            List<String> unusedListVariables = _symbolTable.generateUnusedList()
+	                                                               .stream()
+	                                                               .map(x -> x.getName())
+	                                                               .toList();
+	            System.out.println("Warning: Unused variables: " + unusedListVariables);
+	            warnings.add("Warning: Unused variables: " + unusedListVariables.stream().collect(Collectors.joining(", ", "[", "]")));
+
 	        }
 		}
 
