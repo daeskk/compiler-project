@@ -23,4 +23,9 @@ public class AttrCommand implements Command
     {
         return "";
     }
+
+    @Override
+    public String generatePythonCode() {
+        return id + " = " + expression;
+    }
 }

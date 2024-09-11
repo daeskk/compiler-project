@@ -35,6 +35,11 @@ public class CodeGenerator
             {
                 return generateCppFile();
             }
+            case ProgrammingLanguage.PYTHON ->
+            {
+                System.out.println("Generating Python file");
+                return generatePythonFile();
+            }
         }
 
         return "";
@@ -96,4 +101,27 @@ public class CodeGenerator
 
         return stringBuilder.toString();
     }
+
+    private String generatePythonFile()
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("def main():\n");
+
+        symbolTable.generateList().forEach(x -> stringBuilder
+                .append("\t")
+                .append(x.generatePythonDeclarationCode())
+                .append("\n"));
+
+        commands.forEach(x -> stringBuilder
+                .append("\t")
+                .append(x.generatePythonCode())
+                .append("\n"));
+
+        stringBuilder.append("\nif __name__ == '__main__':\n");
+        stringBuilder.append("\tmain()\n");
+
+        return stringBuilder.toString();
+    }
+
 }

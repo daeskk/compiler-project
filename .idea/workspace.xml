@@ -5,14 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e74b6448-a45c-43ed-8af4-edf531993f81" name="Changes" comment="parser almost finished">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IsiGrammar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/IsiGrammar.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compiler-api/src/main/java/com/compilerapi/CompilerApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-api/src/main/java/com/compilerapi/CompilerApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarBaseListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarLexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/AttrCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/AttrCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/BreakCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/BreakCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/CodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/CodeGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/DoWhileCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/DoWhileCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/IfCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/IfCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/ReadCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/ReadCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/WhileCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/WhileCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/WriteCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/WriteCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammar.interp" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammar.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarLexer.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/datastructures/Symbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/datastructures/Symbol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/datastructures/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/datastructures/Variable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/enums/ProgrammingLanguage.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/enums/ProgrammingLanguage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,11 +69,17 @@
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/arthur/eclipse-workspace/compiler/compiler-core/src",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "C:/Users/arthur/eclipse-workspace/compiler/Main.java",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "Errors"
+    "settings.editor.selected.configurable": "Errors",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -69,10 +87,11 @@
       <recent name="C:\Users\arthur\eclipse-workspace\compiler\compiler-core\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CompilerApiApplication">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="CompilerApiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.java.com.compilerapi.CompilerApiApplication" />
       <module name="compiler-api" />
+      <option name="PROGRAM_PARAMETERS" value="C:\Users\nayva\Desktop\compiler\compiler-project\input.isi" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="main.java.com.compilerapi.*" />
@@ -83,9 +102,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Main errado" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="compiler.main.Main" />
-      <module name="compiler-core" />
+      <module name="compiler" />
+      <option name="PROGRAM_PARAMETERS" value="C:\Users\nayva\Desktop\compiler\compiler-project\input.isi" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="compiler.main.*" />
@@ -98,7 +118,8 @@
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="compiler.main.Main" />
-      <module name="compiler" />
+      <module name="compiler-core" />
+      <option name="PROGRAM_PARAMETERS" value="C:\Users\nayva\Desktop\compiler\compiler-project\input.isi" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="compiler.main.*" />
@@ -109,13 +130,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.CompilerApiApplication" />
+      <item itemvalue="Application.Main errado" />
+      <item itemvalue="Application.Main" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.CompilerApiApplication" />
-        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main errado" />
+        <item itemvalue="Application.CompilerApiApplication" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -125,6 +159,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1723228024038</updated>
+      <workItem from="1726077244017" duration="51000" />
+      <workItem from="1726077307342" duration="8947000" />
     </task>
     <task id="LOCAL-00001" summary="parser almost finished">
       <option name="closed" value="true" />
@@ -144,6 +180,9 @@
     </task>
     <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

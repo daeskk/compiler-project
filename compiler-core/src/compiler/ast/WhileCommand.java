@@ -33,4 +33,16 @@ public class WhileCommand implements Command
     {
         return "";
     }
+
+    @Override
+    public String generatePythonCode()
+    {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("while ").append(expression).append(":\n");
+
+        commandList.forEach(x -> sb.append("\t").append(x.generatePythonCode()).append("\n"));
+
+        return sb.toString();
+    }
 }

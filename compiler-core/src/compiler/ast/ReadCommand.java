@@ -34,4 +34,9 @@ public class ReadCommand implements Command
     {
         return "";
     }
+
+    @Override
+    public String generatePythonCode() {
+        return variable + " = input()";
+    }
 }

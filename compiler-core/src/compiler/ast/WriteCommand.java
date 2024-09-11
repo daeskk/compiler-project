@@ -22,4 +22,9 @@ public class WriteCommand implements Command
     {
         return "";
     }
+
+    @Override
+    public String generatePythonCode() {
+        return "print(" + id + ")";
+    }
 }

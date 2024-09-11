@@ -5,4 +5,6 @@ public interface Command
     String generateJavaCode();
 
     String generateCppCode();
+
+    String generatePythonCode();
 }

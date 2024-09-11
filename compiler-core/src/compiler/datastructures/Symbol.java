@@ -15,4 +15,5 @@ public abstract class Symbol
 
 	public abstract String generateJavaDeclarationCode();
 	public abstract String generateCppDeclarationCode();
+	public abstract String generatePythonDeclarationCode();
 }

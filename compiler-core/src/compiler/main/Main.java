@@ -35,6 +35,9 @@ public class Main
 
 			IsiGrammarParser.ProgContext context = grammarParser.prog();
 
+			// Print para verificar o conteúdo da lista de resultados antes de acessar os índices
+			System.out.println("Results List Size: " + context.results.size());
+
 			FileWriter writer = new FileWriter(grammarParser.getCodeGenerator().getProgramName() + ".java");
 			writer.write(context.results.get(ProgrammingLanguage.JAVA.ordinal()));
 			writer.close();
@@ -42,6 +45,15 @@ public class Main
 			writer = new FileWriter(grammarParser.getCodeGenerator().getProgramName() + ".cpp");
 			writer.write(context.results.get(ProgrammingLanguage.CPP.ordinal()));
 			writer.close();
+
+			// Verificação para Python
+			if (context.results.size() > ProgrammingLanguage.PYTHON.ordinal()) {
+				writer = new FileWriter(grammarParser.getCodeGenerator().getProgramName() + ".py");
+				writer.write(context.results.get(ProgrammingLanguage.PYTHON.ordinal()));
+				writer.close();
+			} else {
+				System.out.println("Python code generation failed or was not added to results.");
+			}
 
 			System.out.println("Compilation successful.");
 		} catch (SemanticException e)

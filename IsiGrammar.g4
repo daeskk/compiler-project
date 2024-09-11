@@ -124,6 +124,9 @@ prog returns [List<String> results] : 'programa' IDENTIFIER {
 
                         $results.add(codeGenerator.generateTarget(ProgrammingLanguage.JAVA));
 					    $results.add(codeGenerator.generateTarget(ProgrammingLanguage.CPP));
+					    $results.add(codeGenerator.generateTarget(ProgrammingLanguage.PYTHON));
+
+					    System.out.println("Generated Results: " + $results);
 					}
 					;
 
