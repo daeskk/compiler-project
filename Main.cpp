@@ -8,7 +8,7 @@ int main() {
 	std::string testString2;
 		waowMyString = "helloioii";
 		a = 2;
-		b = 1+2*3/a;
+		b = 1+2*"test"/a;
 		std::cout << "a variavel b vale " << std::endl;
 		std::cout << b << std::endl;
 		std::cin >> c;

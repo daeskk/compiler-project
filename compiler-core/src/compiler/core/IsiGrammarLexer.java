@@ -162,6 +162,24 @@ public class IsiGrammarLexer extends Lexer {
 	        }
 		}
 
+		public String convertTypeToString(int type) {
+		    switch (type) {
+		        case Variable.INTEGER:
+		            return "Integer";
+		        case Variable.DOUBLE:
+		            return "Double";
+	            case Variable.STRING:
+	                return "String";
+	            default: return "unknown";
+		    }
+		}
+
+		public void checkTypes(int type) {
+		    if (_exprLeftType != type) {
+	            throw new SemanticException("Symbol '" + _exprLeftVarname + "' can't receive a '" + convertTypeToString(type) + "' value");
+		    }
+		}
+
 		public void setAsUsed() {
 		    Variable currentVar = (Variable) _symbolTable.get(_varName);
 			currentVar.setUsed(true);
@@ -178,6 +196,12 @@ public class IsiGrammarLexer extends Lexer {
 	            System.out.println("Warning: Uninitialized variables: " + uninitializedList);
 	            warnings.add("Warning: Uninitialized variables: " + uninitializedList.stream().map(x -> String.valueOf(x)).collect(Collectors.joining(", ", "[", "]")));
 	        }
+		}
+
+		public void checkOperatorType(String operator) {
+		    if (_exprLeftType == Variable.STRING && !operator.equals("+")) {
+		        throw new SemanticException("Operator '" + operator + "' is not allowed for the variable '" + _exprLeftVarname + "' of type 'string'");
+		    }
 		}
 
 		public void verifyUnusedVariables() {

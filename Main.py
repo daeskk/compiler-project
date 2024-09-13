@@ -7,7 +7,7 @@ def main():
 	testString2 = ""
 	waowMyString = "helloioii"
 	a = 2
-	b = 1+2*3/a
+	b = 1+2*"test"/a
 	print("a variavel b vale ")
 	print(b)
 	Variable{type=1, initialized=true, used=true, name='c'} = input()

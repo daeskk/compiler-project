@@ -23,7 +23,7 @@ grammar IsiGrammar;
 	private boolean _breakUsable = false;
 	private boolean _hasScanner = false;
 
-	private String _varName, _exprLeftVarname, top;
+	private String _varName, _exprLeftVarname, top, _lastContent;
 
 	private Stack<String> expressionStack = new Stack<>();
 	private Stack<IfCommand> ifCommandStack= new Stack<>();
@@ -73,6 +73,24 @@ grammar IsiGrammar;
         }
 	}
 
+	public String convertTypeToString(int type) {
+	    switch (type) {
+	        case Variable.INTEGER:
+	            return "Integer";
+	        case Variable.DOUBLE:
+	            return "Double";
+            case Variable.STRING:
+                return "String";
+            default: return "unknown";
+	    }
+	}
+
+	public void checkTypes(int type) {
+	    if (_exprLeftType != type) {
+            throw new SemanticException("Symbol '" + _exprLeftVarname + "' can't receive a '" + convertTypeToString(type) + "' value");
+	    }
+	}
+
 	public void setAsUsed() {
 	    Variable currentVar = (Variable) _symbolTable.get(_varName);
 		currentVar.setUsed(true);
@@ -89,6 +107,12 @@ grammar IsiGrammar;
             System.out.println("Warning: Uninitialized variables: " + uninitializedList);
             warnings.add("Warning: Uninitialized variables: " + uninitializedList.stream().map(x -> String.valueOf(x)).collect(Collectors.joining(", ", "[", "]")));
         }
+	}
+
+	public void checkOperatorType(String operator) {
+	    if (_exprLeftType == Variable.STRING && !operator.equals("+")) {
+	        throw new SemanticException("Operator '" + operator + "' is not allowed for the variable '" + _exprLeftVarname + "' of type 'string'");
+	    }
 	}
 
 	public void verifyUnusedVariables() {
@@ -322,9 +346,12 @@ term 				: factor {
                     }
                     ((MUL | DIV) {
                          top = expressionStack.pop();
-                         top += _input.LT(-1).getText();
+                         String temp = _input.LT(-1).getText();
+                         top += temp;
 
                          expressionStack.push(top);
+
+                         checkOperatorType(temp);
                     }
                     factor {
                          top = expressionStack.pop();
@@ -341,6 +368,7 @@ expr 				: term
                          top += _input.LT(-1).getText();
 
                          expressionStack.push(top);
+                         checkOperatorType(temp);
                     }
                     term
                     )*
@@ -353,9 +381,11 @@ factor				: NUMBER {
                         } else {
                             _exprRightType = Variable.INTEGER;
                         }
+                        checkTypes(_exprRightType);
                     }
                     | TEXT {
                         _exprRightType = Variable.STRING;
+                        checkTypes(_exprRightType);
                     }
 					| IDENTIFIER {
 						_varName = _input.LT(-1).getText();
@@ -365,6 +395,7 @@ factor				: NUMBER {
 
                         Variable _var = (Variable) _symbolTable.get(_input.LT(-1).getText());
                         _exprRightType = _var.getType();
+                        checkTypes(_exprRightType);
 					}
 					| LEFTPARENTHESIS expr RIGHTPARENTHESIS
 					;

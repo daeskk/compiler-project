@@ -10,7 +10,7 @@ public class Main {
 		String testString2;
 		waowMyString = "helloioii";
 		a = 2;
-		b = 1+2*3/a;
+		b = 1+2*"test"/a;
 		System.out.println("a variavel b vale ");
 		System.out.println(b);
 		c = _sc.nextDouble(); _sc.nextLine();

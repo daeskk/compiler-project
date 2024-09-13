@@ -169,6 +169,24 @@ public class IsiGrammarParser extends Parser {
 	        }
 		}
 
+		public String convertTypeToString(int type) {
+		    switch (type) {
+		        case Variable.INTEGER:
+		            return "Integer";
+		        case Variable.DOUBLE:
+		            return "Double";
+	            case Variable.STRING:
+	                return "String";
+	            default: return "unknown";
+		    }
+		}
+
+		public void checkTypes(int type) {
+		    if (_exprLeftType != type) {
+	            throw new SemanticException("Symbol '" + _exprLeftVarname + "' can't receive a '" + convertTypeToString(type) + "' value");
+		    }
+		}
+
 		public void setAsUsed() {
 		    Variable currentVar = (Variable) _symbolTable.get(_varName);
 			currentVar.setUsed(true);
@@ -185,6 +203,12 @@ public class IsiGrammarParser extends Parser {
 	            System.out.println("Warning: Uninitialized variables: " + uninitializedList);
 	            warnings.add("Warning: Uninitialized variables: " + uninitializedList.stream().map(x -> String.valueOf(x)).collect(Collectors.joining(", ", "[", "]")));
 	        }
+		}
+
+		public void checkOperatorType(String operator) {
+		    if (_exprLeftType == Variable.STRING && !operator.equals("+")) {
+		        throw new SemanticException("Operator '" + operator + "' is not allowed for the variable '" + _exprLeftVarname + "' of type 'string'");
+		    }
 		}
 
 		public void verifyUnusedVariables() {
@@ -1278,9 +1302,12 @@ public class IsiGrammarParser extends Parser {
 				}
 
 				                         top = expressionStack.pop();
-				                         top += _input.LT(-1).getText();
+				                         String temp = _input.LT(-1).getText();
+				                         top += temp;
 
 				                         expressionStack.push(top);
+
+				                         checkOperatorType(temp);
 				                    
 				setState(186);
 				factor();
@@ -1434,6 +1461,7 @@ public class IsiGrammarParser extends Parser {
 				                        } else {
 				                            _exprRightType = Variable.INTEGER;
 				                        }
+				                        checkTypes(_exprRightType);
 				                    
 				}
 				break;
@@ -1444,6 +1472,7 @@ public class IsiGrammarParser extends Parser {
 				match(TEXT);
 
 				                        _exprRightType = Variable.STRING;
+				                        checkTypes(_exprRightType);
 				                    
 				}
 				break;
@@ -1460,6 +1489,7 @@ public class IsiGrammarParser extends Parser {
 
 				                        Variable _var = (Variable) _symbolTable.get(_input.LT(-1).getText());
 				                        _exprRightType = _var.getType();
+				                        checkTypes(_exprRightType);
 									
 				}
 				break;

@@ -7,7 +7,7 @@ declare string waowMyString, testString2.
 waowMyString := "helloioii".
 
 a := 2.
-b := 1 + 2 * 3 / a.
+b := 1 + 2 * "test" / a.
 
 escreva("a variavel b vale ").
 escreva(b).
