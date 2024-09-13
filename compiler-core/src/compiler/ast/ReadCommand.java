@@ -39,4 +39,14 @@ public class ReadCommand implements Command
     public String generatePythonCode() {
         return variable + " = input()";
     }
+
+    @Override
+    public String generateKotlinCode() {
+        return switch (variable.getType()) {
+            case Variable.INTEGER -> variable.getName() + " = readLine()!!.toInt()";
+            case Variable.DOUBLE  -> variable.getName() + " = readLine()!!.toDouble()";
+            case Variable.STRING  -> variable.getName() + " = readLine()!!";
+            default -> throw new IllegalStateException("Unexpected value: " + variable.getType());
+        };
+    }
 }

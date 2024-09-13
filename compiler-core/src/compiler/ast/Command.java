@@ -7,4 +7,6 @@ public interface Command
     String generateCppCode();
 
     String generatePythonCode();
+
+    String generateKotlinCode();
 }

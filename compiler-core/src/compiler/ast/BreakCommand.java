@@ -24,4 +24,9 @@ public class BreakCommand implements Command
     {
         return "break\n";
     }
+
+    @Override
+    public String generateKotlinCode() {
+        return "break";
+    }
 }

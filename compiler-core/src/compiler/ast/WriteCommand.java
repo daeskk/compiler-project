@@ -27,4 +27,9 @@ public class WriteCommand implements Command
     public String generatePythonCode() {
         return "print(" + id + ")";
     }
+
+    @Override
+    public String generateKotlinCode() {
+        return "println(" + id + ")";
+    }
 }

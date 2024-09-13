@@ -79,4 +79,22 @@ public class IfCommand implements Command
 
         return sb.toString();
     }
+
+    @Override
+    public String generateKotlinCode()
+    {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("if (").append(expression).append(") {\n");
+        trueList.forEach(x -> sb.append("\t").append(x.generateKotlinCode()).append("\n"));
+        sb.append("}");
+
+        if (!falseList.isEmpty()) {
+            sb.append(" else {\n");
+            falseList.forEach(x -> sb.append("\t").append(x.generateKotlinCode()).append("\n"));
+            sb.append("}");
+        }
+
+        return sb.toString();
+    }
 }
