@@ -46,14 +46,9 @@ public class Main
 			writer.write(context.results.get(ProgrammingLanguage.CPP.ordinal()));
 			writer.close();
 
-			// Verificação para Python
-			if (context.results.size() > ProgrammingLanguage.PYTHON.ordinal()) {
-				writer = new FileWriter(grammarParser.getCodeGenerator().getProgramName() + ".py");
-				writer.write(context.results.get(ProgrammingLanguage.PYTHON.ordinal()));
-				writer.close();
-			} else {
-				System.out.println("Python code generation failed or was not added to results.");
-			}
+			writer = new FileWriter(grammarParser.getCodeGenerator().getProgramName() + ".py");
+			writer.write(context.results.get(ProgrammingLanguage.PYTHON.ordinal()));
+			writer.close();
 
 			System.out.println("Compilation successful.");
 		} catch (SemanticException e)

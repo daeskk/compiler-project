@@ -284,6 +284,9 @@ public class IsiGrammarParser extends Parser {
 
 			                        _localctx.results.add(codeGenerator.generateTarget(ProgrammingLanguage.JAVA));
 								    _localctx.results.add(codeGenerator.generateTarget(ProgrammingLanguage.CPP));
+								    _localctx.results.add(codeGenerator.generateTarget(ProgrammingLanguage.PYTHON));
+
+								    System.out.println("Generated Results: " + _localctx.results);
 								
 			}
 		}
