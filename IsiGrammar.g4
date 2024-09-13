@@ -23,7 +23,7 @@ grammar IsiGrammar;
 	private boolean _breakUsable = false;
 	private boolean _hasScanner = false;
 
-	private String _varName, _exprLeftVarname, top, _lastContent;
+	private String _varName, _exprLeftVarname, top, _lastContent, temp;
 
 	private Stack<String> expressionStack = new Stack<>();
 	private Stack<IfCommand> ifCommandStack= new Stack<>();
@@ -346,7 +346,7 @@ term 				: factor {
                     }
                     ((MUL | DIV) {
                          top = expressionStack.pop();
-                         String temp = _input.LT(-1).getText();
+                         temp = _input.LT(-1).getText();
                          top += temp;
 
                          expressionStack.push(top);
