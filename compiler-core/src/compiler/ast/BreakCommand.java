@@ -19,11 +19,6 @@ public class BreakCommand implements Command
         return "break;\n";
     }
 
-    @Override
-    public String generatePythonCode()
-    {
-        return "break\n";
-    }
 
     @Override
     public String generateKotlinCode() {

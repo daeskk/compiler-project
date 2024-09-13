@@ -74,23 +74,6 @@ public class Variable extends Symbol
 	}
 
 	@Override
-    public String generatePythonDeclarationCode()
-	{
-		StringBuilder sb = new StringBuilder();
-
-		switch (type)
-		{
-			case Variable.INTEGER -> sb.append(name).append(" = 0");
-			case Variable.DOUBLE  -> sb.append(name).append(" = 0.0");
-			case Variable.STRING  -> sb.append(name).append(" = \"\"");
-
-			default -> throw new CodeGenerationException("Unrecognized type");
-		}
-
-		return sb.toString();
-	}
-
-	@Override
 	public String generateKotlinDeclarationCode() {
 		StringBuilder sb = new StringBuilder();
 

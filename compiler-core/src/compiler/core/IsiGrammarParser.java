@@ -119,7 +119,7 @@ public class IsiGrammarParser extends Parser {
 		private boolean _breakUsable = false;
 		private boolean _hasScanner = false;
 
-		private String _varName, _exprLeftVarname, top, _lastContent;
+		private String _varName, _exprLeftVarname, top, _lastContent, temp;
 
 		private Stack<String> expressionStack = new Stack<>();
 		private Stack<IfCommand> ifCommandStack= new Stack<>();
@@ -308,10 +308,8 @@ public class IsiGrammarParser extends Parser {
 
 			                        _localctx.results.add(codeGenerator.generateTarget(ProgrammingLanguage.JAVA));
 								    _localctx.results.add(codeGenerator.generateTarget(ProgrammingLanguage.CPP));
-								    _localctx.results.add(codeGenerator.generateTarget(ProgrammingLanguage.PYTHON));
 			                        _localctx.results.add(codeGenerator.generateTarget(ProgrammingLanguage.KOTLIN));
 
-								    System.out.println("Generated Results: " + _localctx.results);
 								
 			}
 		}
@@ -1303,7 +1301,7 @@ public class IsiGrammarParser extends Parser {
 				}
 
 				                         top = expressionStack.pop();
-				                         String temp = _input.LT(-1).getText();
+				                         temp = _input.LT(-1).getText();
 				                         top += temp;
 
 				                         expressionStack.push(top);

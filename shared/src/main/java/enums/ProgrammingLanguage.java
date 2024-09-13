@@ -4,6 +4,5 @@ public enum ProgrammingLanguage
 {
     JAVA,
     CPP,
-    PYTHON,
     KOTLIN
 }

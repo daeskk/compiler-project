@@ -46,10 +46,6 @@ public class Main
 			writer.write(context.results.get(ProgrammingLanguage.CPP.ordinal()));
 			writer.close();
 
-			writer = new FileWriter(grammarParser.getCodeGenerator().getProgramName() + ".py");
-			writer.write(context.results.get(ProgrammingLanguage.PYTHON.ordinal()));
-			writer.close();
-
 			writer = new FileWriter(grammarParser.getCodeGenerator().getProgramName() + ".kt");
 			writer.write(context.results.get(ProgrammingLanguage.KOTLIN.ordinal()));
 			writer.close();

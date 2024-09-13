@@ -10,11 +10,10 @@ public class Main {
 		String testString2;
 		waowMyString = "helloioii";
 		a = 2;
-		b = 1+2*"test"/a;
+		b = 1+2*3/a;
 		System.out.println("a variavel b vale ");
 		System.out.println(b);
 		c = _sc.nextDouble(); _sc.nextLine();
-		testString2 = "helloioiiasdasd";
 		System.out.println(a);
 		if (b!=5) {
 System.out.println(b);

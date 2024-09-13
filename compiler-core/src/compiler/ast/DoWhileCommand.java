@@ -43,21 +43,6 @@ public class DoWhileCommand implements Command
     }
 
     @Override
-    public String generatePythonCode()
-    {
-        StringBuilder sb = new StringBuilder();
-
-        sb.append("while True:").append("\n");
-
-        commandList.forEach(x -> sb.append("\t").append(x.generatePythonCode()).append("\n"));
-
-        sb.append("\tif not (").append(expression).append("):").append("\n");
-        sb.append("\t\tbreak").append("\n");
-
-        return sb.toString();
-    }
-
-    @Override
     public String generateKotlinCode()
     {
         StringBuilder sb = new StringBuilder();

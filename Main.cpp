@@ -8,11 +8,10 @@ int main() {
 	std::string testString2;
 		waowMyString = "helloioii";
 		a = 2;
-		b = 1+2*"test"/a;
+		b = 1+2*3/a;
 		std::cout << "a variavel b vale " << std::endl;
 		std::cout << b << std::endl;
 		std::cin >> c;
-		testString2 = "helloioiiasdasd";
 		std::cout << a << std::endl;
 		if (b!=5) {
 std::cout << b << std::endl;

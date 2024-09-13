@@ -36,11 +36,6 @@ public class ReadCommand implements Command
     }
 
     @Override
-    public String generatePythonCode() {
-        return variable + " = input()";
-    }
-
-    @Override
     public String generateKotlinCode() {
         return switch (variable.getType()) {
             case Variable.INTEGER -> variable.getName() + " = readLine()!!.toInt()";

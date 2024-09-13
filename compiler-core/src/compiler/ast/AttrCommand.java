@@ -25,11 +25,6 @@ public class AttrCommand implements Command
     }
 
     @Override
-    public String generatePythonCode() {
-        return id + " = " + expression;
-    }
-
-    @Override
     public String generateKotlinCode() {
         return id + " = " + expression;
     }
