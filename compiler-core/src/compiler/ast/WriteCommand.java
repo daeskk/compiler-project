@@ -20,7 +20,7 @@ public class WriteCommand implements Command
     @Override
     public String generateCppCode()
     {
-        return "";
+        return "std::cout << " + id + " << std::endl" + ";";
     }
 
     @Override

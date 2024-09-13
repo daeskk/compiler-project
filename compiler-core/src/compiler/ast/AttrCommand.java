@@ -21,7 +21,7 @@ public class AttrCommand implements Command
     @Override
     public String generateCppCode()
     {
-        return "";
+        return id + " = " + expression + ";";
     }
 
     @Override

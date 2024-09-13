@@ -43,7 +43,23 @@ public class IfCommand implements Command
     @Override
     public String generateCppCode()
     {
-        return "";
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("if (").append(expression).append(") {").append("\n");
+
+        trueList.forEach(x -> sb.append(x.generateCppCode()).append("\n"));
+
+        sb.append("}").append("\n");
+
+        if (!falseList.isEmpty()) {
+            sb.append("else {").append("\n");
+
+            falseList.forEach(x -> sb.append(x.generateCppCode()).append("\n"));
+
+            sb.append("}").append("\n");
+        }
+
+        return sb.toString();
     }
 
     @Override

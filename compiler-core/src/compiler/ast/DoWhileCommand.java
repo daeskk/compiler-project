@@ -31,7 +31,15 @@ public class DoWhileCommand implements Command
     @Override
     public String generateCppCode()
     {
-        return "";
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("do {").append("\n");
+
+        commandList.forEach(x -> sb.append(x.generateCppCode()).append("\n"));
+
+        sb.append("}").append("while (").append(expression).append(");").append("\n");
+
+        return sb.toString();
     }
 
     @Override

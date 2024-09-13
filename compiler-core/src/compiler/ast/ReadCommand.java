@@ -32,7 +32,7 @@ public class ReadCommand implements Command
     @Override
     public String generateCppCode()
     {
-        return "";
+        return "std::cin >> " + variable.getName() + ";";
     }
 
     @Override

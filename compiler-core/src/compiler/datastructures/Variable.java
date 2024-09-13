@@ -52,7 +52,7 @@ public class Variable extends Symbol
 		{
 			case Variable.INTEGER -> sb.append("int ");
 			case Variable.DOUBLE  -> sb.append("float ");
-			case Variable.STRING  -> sb.append("string ");
+			case Variable.STRING  -> sb.append("std::string ");
 
 			default -> throw new CodeGenerationException("Unrecognized type");
 		}

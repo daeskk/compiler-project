@@ -31,7 +31,15 @@ public class WhileCommand implements Command
     @Override
     public String generateCppCode()
     {
-        return "";
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("while (").append(expression).append(") {").append("\n");
+
+        commandList.forEach(x -> sb.append(x.generateCppCode()).append("\n"));
+
+        sb.append("}").append("\n");
+
+        return sb.toString();
     }
 
     @Override
