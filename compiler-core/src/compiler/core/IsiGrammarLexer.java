@@ -108,7 +108,7 @@ public class IsiGrammarLexer extends Lexer {
 
 		
 		private int _varType;
-		private Integer _exprLeftType, _exprRightType = null;
+		private Integer _exprLeftType = -1, _exprRightType = null;
 		private boolean _breakUsable = false;
 		private boolean _hasScanner = false;
 
@@ -175,6 +175,9 @@ public class IsiGrammarLexer extends Lexer {
 		}
 
 		public void checkTypes(int type) {
+	        if (_exprLeftType == -1) {
+	            return;
+	        }
 		    if (_exprLeftType != type) {
 	            throw new SemanticException("Symbol '" + _exprLeftVarname + "' can't receive a '" + convertTypeToString(type) + "' value");
 		    }

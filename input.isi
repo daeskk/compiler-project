@@ -27,6 +27,8 @@ se (b != 5) entao
             escreva("b mais um fica igual a 5").
         }
 	}
+} senao {
+    escreva("b nao vale 5").
 }
 
 execute

@@ -35,9 +35,6 @@ public class Main
 
 			IsiGrammarParser.ProgContext context = grammarParser.prog();
 
-			// Print para verificar o conteúdo da lista de resultados antes de acessar os índices
-			System.out.println("Results List Size: " + context.results.size());
-
 			FileWriter writer = new FileWriter(grammarParser.getCodeGenerator().getProgramName() + ".java");
 			writer.write(context.results.get(ProgrammingLanguage.JAVA.ordinal()));
 			writer.close();

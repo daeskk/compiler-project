@@ -115,7 +115,7 @@ public class IsiGrammarParser extends Parser {
 
 		
 		private int _varType;
-		private Integer _exprLeftType, _exprRightType = null;
+		private Integer _exprLeftType = -1, _exprRightType = null;
 		private boolean _breakUsable = false;
 		private boolean _hasScanner = false;
 
@@ -182,6 +182,9 @@ public class IsiGrammarParser extends Parser {
 		}
 
 		public void checkTypes(int type) {
+	        if (_exprLeftType == -1) {
+	            return;
+	        }
 		    if (_exprLeftType != type) {
 	            throw new SemanticException("Symbol '" + _exprLeftVarname + "' can't receive a '" + convertTypeToString(type) + "' value");
 		    }
@@ -309,7 +312,6 @@ public class IsiGrammarParser extends Parser {
 			                        _localctx.results.add(codeGenerator.generateTarget(ProgrammingLanguage.JAVA));
 								    _localctx.results.add(codeGenerator.generateTarget(ProgrammingLanguage.CPP));
 			                        _localctx.results.add(codeGenerator.generateTarget(ProgrammingLanguage.KOTLIN));
-
 								
 			}
 		}
@@ -1011,6 +1013,8 @@ public class IsiGrammarParser extends Parser {
 			                        }
 			                        _currentVar.setInitialized(true);
 			                        commandStack.peek().add(new AttrCommand(_exprLeftVarname, expressionStack.pop()));
+								    _exprLeftType = -1;
+								    _exprLeftVarname = "";
 								
 			}
 		}
@@ -1395,7 +1399,6 @@ public class IsiGrammarParser extends Parser {
 				                         top += _input.LT(-1).getText();
 
 				                         expressionStack.push(top);
-				                         checkOperatorType(temp);
 				                    
 				setState(197);
 				term();

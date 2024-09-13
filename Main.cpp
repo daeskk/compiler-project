@@ -24,6 +24,9 @@ std::cout << "b mais um fica igual a 5" << std::endl;
 }
 
 }
+else {
+std::cout << "b nao vale 5" << std::endl;
+}
 
 		do {
 std::cout << b << std::endl;

@@ -26,6 +26,9 @@ System.out.println("b mais um fica igual a 5");
 }
 
 }
+else {
+System.out.println("b nao vale 5");
+}
 
 		do {
 System.out.println(b);

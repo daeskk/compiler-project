@@ -1,14 +1,10 @@
 # compiler-project
+Projeto final da disciplina de compiladores e interpretadores
 
-command to generate ANTLR source files:
-```
-java -cp antlr-4.13.2-complete.jar org.antlr.v4.Tool IsiGrammar.g4 -o compiler-core/src/compiler/core -package compiler.core
-```
-
-## Youtube video link
+## Link para o vídeo no youtube
 https://www.youtube.com/
 
-## Project members
+## Membros do projeto
 <table> 
 	<thead>
 	<th>Nome</th>
@@ -26,3 +22,24 @@ https://www.youtube.com/
 	</tbody>
 </table>
  
+## Checklist obrigatória
+
+- [x] Possui 2 tipos de variáveis
+- [x] Possui a estrutura If.. else
+- [x] Possui estrutura de controle while/do while
+- [x] Operações Aritméticas executadas corretamente
+- [x] Atribuições realizadas corretamente
+- [x] Possui operações de Entrada e Saída
+- [x] Aceita números decimais
+- [x] Verificar se a variável já foi previamente declarada
+- [x] Verificar se a variável foi declarada e não foi usada
+- [x] Verificar se uma variável está sendo usada sem ter valor inicial
+
+## Checklist opcional
+
+- [ ] Editor Highlight (simulando uma pequena IDE)
+- [ ] Avaliador de expressões aritméticas
+- [ ] Inserção de Operadores lógicos
+- [x] Geração de várias linguagens-alvo
+- [x] Uma API Rest para implementação do compilador
+- [ ] Um Interpretador (runtime) para a linguagem

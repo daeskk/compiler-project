@@ -19,7 +19,7 @@ grammar IsiGrammar;
 @members 
 {	
 	private int _varType;
-	private Integer _exprLeftType, _exprRightType = null;
+	private Integer _exprLeftType = -1, _exprRightType = null;
 	private boolean _breakUsable = false;
 	private boolean _hasScanner = false;
 
@@ -86,6 +86,9 @@ grammar IsiGrammar;
 	}
 
 	public void checkTypes(int type) {
+        if (_exprLeftType == -1) {
+            return;
+        }
 	    if (_exprLeftType != type) {
             throw new SemanticException("Symbol '" + _exprLeftVarname + "' can't receive a '" + convertTypeToString(type) + "' value");
 	    }
@@ -149,7 +152,6 @@ prog returns [List<String> results] : 'programa' IDENTIFIER {
                         $results.add(codeGenerator.generateTarget(ProgrammingLanguage.JAVA));
 					    $results.add(codeGenerator.generateTarget(ProgrammingLanguage.CPP));
                         $results.add(codeGenerator.generateTarget(ProgrammingLanguage.KOTLIN));
-
 					}
 					;
 
@@ -277,6 +279,8 @@ cmdexpr 			: IDENTIFIER {
                         }
                         _currentVar.setInitialized(true);
                         commandStack.peek().add(new AttrCommand(_exprLeftVarname, expressionStack.pop()));
+					    _exprLeftType = -1;
+					    _exprLeftVarname = "";
 					}
 					;
 					
@@ -367,7 +371,6 @@ expr 				: term
                          top += _input.LT(-1).getText();
 
                          expressionStack.push(top);
-                         checkOperatorType(temp);
                     }
                     term
                     )*

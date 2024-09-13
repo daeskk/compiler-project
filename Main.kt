@@ -20,6 +20,8 @@ fun main() {
 	println("b mais um fica igual a 5")
 }
 }
+} else {
+	println("b nao vale 5")
 }
 	do {
 	println(b)
