@@ -53,4 +53,16 @@ public class WhileCommand implements Command
 
         return sb.toString();
     }
+
+    @Override
+    public String generateKotlinCode()
+    {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("while (").append(expression).append(") {\n");
+        commandList.forEach(x -> sb.append("\t").append(x.generateKotlinCode()).append("\n"));
+        sb.append("}");
+
+        return sb.toString();
+    }
 }

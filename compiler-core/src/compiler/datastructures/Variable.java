@@ -90,4 +90,21 @@ public class Variable extends Symbol
 		return sb.toString();
 	}
 
+	@Override
+	public String generateKotlinDeclarationCode() {
+		StringBuilder sb = new StringBuilder();
+
+		sb.append("var ").append(getName()).append(": ");
+
+		switch (getType()) {
+			case Variable.INTEGER -> sb.append("Int");
+			case Variable.DOUBLE  -> sb.append("Double");
+			case Variable.STRING  -> sb.append("String");
+			default -> throw new CodeGenerationException("Unrecognized type for Kotlin");
+		}
+
+		sb.append(";");
+
+		return sb.toString();
+	}
 }

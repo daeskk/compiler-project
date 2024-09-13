@@ -40,6 +40,11 @@ public class CodeGenerator
                 System.out.println("Generating Python file");
                 return generatePythonFile();
             }
+            case ProgrammingLanguage.KOTLIN ->
+            {
+                System.out.println("Generating Kotlin file...");
+                return generateKotlinFile();
+            }
         }
 
         return "";
@@ -120,6 +125,27 @@ public class CodeGenerator
 
         stringBuilder.append("\nif __name__ == '__main__':\n");
         stringBuilder.append("\tmain()\n");
+
+        return stringBuilder.toString();
+    }
+
+    private String generateKotlinFile()
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("fun main() {\n");
+
+        symbolTable.generateList().forEach(x -> stringBuilder
+                .append("\t")
+                .append(x.generateKotlinDeclarationCode())
+                .append("\n"));
+
+        commands.forEach(x -> stringBuilder
+                .append("\t")
+                .append(x.generateKotlinCode())
+                .append("\n"));
+
+        stringBuilder.append("}");
 
         return stringBuilder.toString();
     }

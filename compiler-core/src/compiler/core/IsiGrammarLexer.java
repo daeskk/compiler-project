@@ -112,7 +112,7 @@ public class IsiGrammarLexer extends Lexer {
 		private boolean _breakUsable = false;
 		private boolean _hasScanner = false;
 
-		private String _varName, _exprLeftVarname, top;
+		private String _varName, _exprLeftVarname, top, _lastContent;
 
 		private Stack<String> expressionStack = new Stack<>();
 		private Stack<IfCommand> ifCommandStack= new Stack<>();

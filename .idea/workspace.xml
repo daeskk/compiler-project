@@ -5,14 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e74b6448-a45c-43ed-8af4-edf531993f81" name="Changes" comment="parser almost finished">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IsiGrammar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/IsiGrammar.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/AttrCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/AttrCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/BreakCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/BreakCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/CodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/CodeGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/DoWhileCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/DoWhileCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/IfCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/IfCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/ReadCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/ReadCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/WhileCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/WhileCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/ast/WriteCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/ast/WriteCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammar.interp" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammar.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarLexer.interp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarLexer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/core/IsiGrammarParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input.isi" beforeDir="false" afterPath="$PROJECT_DIR$/input.isi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/datastructures/Symbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/datastructures/Symbol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/datastructures/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/datastructures/Variable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler-core/src/compiler/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler-core/src/compiler/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/enums/ProgrammingLanguage.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/enums/ProgrammingLanguage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,6 +162,7 @@
       <workItem from="1726077244017" duration="51000" />
       <workItem from="1726077307342" duration="8947000" />
       <workItem from="1726193754594" duration="579000" />
+      <workItem from="1726207807109" duration="549000" />
     </task>
     <task id="LOCAL-00001" summary="parser almost finished">
       <option name="closed" value="true" />
